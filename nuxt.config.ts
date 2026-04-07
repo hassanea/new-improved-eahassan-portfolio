@@ -1,9 +1,9 @@
 import tailwindcss from "@tailwindcss/vite";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-import process from "node:process";
+// import process from "node:process";
 
-const sw = process.env.SW === "true";
+// const sw = process.env.SW === "true";
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
@@ -18,11 +18,11 @@ export default defineNuxtConfig({
     "@nuxt/scripts",
     "@vite-pwa/nuxt",
     "@nuxt/ui",
-    (_, nuxt) => {
-      nuxt.hook("pwa:beforeBuildServiceWorker", (options) => {
-        console.log("pwa:beforeBuildServiceWorker: ", options.base);
-      });
-    },
+    // (_, nuxt) => {
+    //   nuxt.hook("pwa:beforeBuildServiceWorker", (options) => {
+    //     console.log("pwa:beforeBuildServiceWorker: ", options.base);
+    //   });
+    // },
     "@pinia/nuxt",
     // "nuxt-security",
     "nuxt-resend",
@@ -185,58 +185,58 @@ export default defineNuxtConfig({
     // you don't need to include this: only for testing purposes
     buildDate: new Date().toISOString(),
   },
-  pwa: {
-    strategies: sw ? "injectManifest" : "generateSW",
-    srcDir: sw ? "service-worker" : undefined,
-    filename: sw ? "sw.ts" : undefined,
-    registerType: "autoUpdate",
-    manifest: {
-      name: "Evan Hassan's Portfolio",
-      short_name: "Evan H.'s Portfolio",
-      theme_color: "#2c4e6d",
-      // icons: [
-      //   {
-      //     src: 'pwa-192x192.png',
-      //     sizes: '192x192',
-      //     type: 'image/png',
-      //   },
-      //   {
-      //     src: 'pwa-512x512.png',
-      //     sizes: '512x512',
-      //     type: 'image/png',
-      //   },
-      //   {
-      //     src: 'pwa-512x512.png',
-      //     sizes: '512x512',
-      //     type: 'image/png',
-      //     purpose: 'any maskable',
-      //   },
-      // ],
-    },
-    workbox: {
-      globPatterns: ["**/*.{js,css,html,jpg,png,webp,avif,svg,pdf,ico}"],
-    },
-    injectManifest: {
-      globPatterns: ["**/*.{js,css,html,jpg,png,webp,avif,svg,pdf,ico}"],
-    },
-    client: {
-      installPrompt: true,
-      // you don't need to include this: only for testing purposes
-      // if enabling periodic sync for update use 1 hour or so (periodicSyncForUpdates: 3600)
-      periodicSyncForUpdates: 20,
-    },
-    experimental: {
-      // @ts-ignore
-      includeAllowlist: true,
-    },
-    devOptions: {
-      enabled: true,
-      suppressWarnings: true,
-      navigateFallback: "/",
-      navigateFallbackAllowlist: [/^\/$/],
-      type: "module",
-    },
-  },
+  // pwa: {
+  //   strategies: sw ? "injectManifest" : "generateSW",
+  //   srcDir: sw ? "service-worker" : undefined,
+  //   filename: sw ? "sw.ts" : undefined,
+  //   registerType: "autoUpdate",
+  //   manifest: {
+  //     name: "Evan Hassan's Portfolio",
+  //     short_name: "Evan H.'s Portfolio",
+  //     theme_color: "#2c4e6d",
+  //     // icons: [
+  //     //   {
+  //     //     src: 'pwa-192x192.png',
+  //     //     sizes: '192x192',
+  //     //     type: 'image/png',
+  //     //   },
+  //     //   {
+  //     //     src: 'pwa-512x512.png',
+  //     //     sizes: '512x512',
+  //     //     type: 'image/png',
+  //     //   },
+  //     //   {
+  //     //     src: 'pwa-512x512.png',
+  //     //     sizes: '512x512',
+  //     //     type: 'image/png',
+  //     //     purpose: 'any maskable',
+  //     //   },
+  //     // ],
+  //   },
+  //   workbox: {
+  //     globPatterns: ["**/*.{js,css,html,jpg,png,webp,avif,svg,pdf,ico}"],
+  //   },
+  //   injectManifest: {
+  //     globPatterns: ["**/*.{js,css,html,jpg,png,webp,avif,svg,pdf,ico}"],
+  //   },
+  //   client: {
+  //     installPrompt: true,
+  //     // you don't need to include this: only for testing purposes
+  //     // if enabling periodic sync for update use 1 hour or so (periodicSyncForUpdates: 3600)
+  //     periodicSyncForUpdates: 20,
+  //   },
+  //   experimental: {
+  //     // @ts-ignore
+  //     includeAllowlist: true,
+  //   },
+  //   devOptions: {
+  //     enabled: true,
+  //     suppressWarnings: true,
+  //     navigateFallback: "/",
+  //     navigateFallbackAllowlist: [/^\/$/],
+  //     type: "module",
+  //   },
+  // },
   router: {
     options: {
       scrollBehaviorType: "smooth",
