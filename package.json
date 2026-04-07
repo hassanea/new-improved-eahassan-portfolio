@@ -1,0 +1,75 @@
+{
+  "name": "eahassan-portfolio",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@duskmoon/vue3-typed-js": "^0.0.4",
+    "@nuxt/a11y": "1.0.0-alpha.1",
+    "@nuxt/eslint": "1.15.2",
+    "@nuxt/fonts": "0.14.0",
+    "@nuxt/hints": "1.0.3",
+    "@nuxt/image": "^2.0.0",
+    "@nuxt/scripts": "0.13.2",
+    "@nuxt/ui": "^4.6.1",
+    "@nuxthub/core": "0.10.7",
+    "@nuxtjs/seo": "^5.1.2",
+    "@nuxtjs/supabase": "2.0.5",
+    "@nuxtjs/turnstile": "1.1.2",
+    "@pinia/nuxt": "0.11.3",
+    "@sentry/nuxt": "^10.47.0",
+    "@tailwindcss/vite": "^4.2.2",
+    "@vesp/nuxt-fontawesome": "2.0.0",
+    "@vite-pwa/nuxt": "1.1.1",
+    "@vueuse/core": "^14.2.1",
+    "@vueuse/nuxt": "14.2.1",
+    "floating-vue": "^5.2.2",
+    "focus-trap": "^8.0.1",
+    "import-in-the-middle": "^3.0.0",
+    "lodash": "^4.18.1",
+    "nuxt": "^4.4.2",
+    "nuxt-security": "2.5.1",
+    "tailwindcss": "^4.2.2",
+    "validate-color": "^2.2.4",
+    "vue": "^3.5.32",
+    "vue-router": "^5.0.4"
+  },
+  "pnpm": {
+    "overrides": {
+      "@vercel/nft": "^0.27.4"
+    },
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "@sentry/cli",
+      "esbuild",
+      "sharp",
+      "vue-demi",
+      "workerd"
+    ]
+  },
+  "devDependencies": {
+    "@fortawesome/free-brands-svg-icons": "^7.2.0",
+    "@fortawesome/free-regular-svg-icons": "^7.2.0",
+    "@fortawesome/free-solid-svg-icons": "^7.2.0",
+    "@fortawesome/pro-solid-svg-icons": "^7.2.0",
+    "@types/cloudflare-turnstile": "^0.2.2",
+    "@types/lodash": "^4.17.24",
+    "eslint-plugin-anti-trojan-source": "^1.1.2",
+    "eslint-plugin-security-node": "^1.1.4",
+    "eslint-plugin-vuejs-accessibility": "^2.5.0",
+    "nuxt-resend": "^0.0.2",
+    "prettier": "^3.8.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "stylelint": "^17.6.0",
+    "stylelint-config-recommended-vue": "^1.6.1",
+    "stylelint-config-standard": "^40.0.0",
+    "typescript": "^6.0.2",
+    "wrangler": "^4.80.0"
+  }
+}

@@ -1,0 +1,28 @@
+@theme {
+  --color-primary: #475867;
+  --color-primary-light: #6b7985;
+  --color-secondary: #2c4e6d;
+  --color-tertiary: #6d9bc3;
+  --color-quaternary: #0f9397;
+  --color-quinary: #0a4aaa;
+  --color-alternative: #dbe9f4;
+  --color-light: #fcfbfc;
+  --color-dark: #000814;
+  --color-selection: #9ec6d6;
+  --color-heads: #313131;
+  --color-linkedin: #0976b4;
+  --color-github: #c9a0ff;
+  --color-gitlab: #e24329;
+  --color-upwork: #66ff00;
+  --color-website: #00008b;
+  --color-google:
+    linear-gradient(#4285f4, transparent),
+    linear-gradient(200deg, #db4437, #f4b400, #0f9d58);
+  --color-firebase: linear-gradient(#ffa611, #f5820d, #ffcb2b);
+  --color-stackoverflow: #ffa500;
+  --font-sans: "Open Sans", sans-serif;
+  --font-sans2: "Roboto", sans-serif;
+  --text-2-5xl: 1.75rem;
+  --text-3-5xl: 2rem;
+  --text-4-5xl: 2.5rem;
+}

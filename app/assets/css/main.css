@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+@import "./theme.css";
+@import "./reset.css";
+@import "./typography.css";
+@import "./base.css";
