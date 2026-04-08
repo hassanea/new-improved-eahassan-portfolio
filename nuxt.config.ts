@@ -52,6 +52,8 @@ export default defineNuxtConfig({
   hub: {},
   css: ["./app/assets/css/main.css"],
   sentry: {
+    authToken:
+      "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",
     org: "ev-corp",
     project: "eahassan-portfolio",
   },
@@ -88,6 +90,8 @@ export default defineNuxtConfig({
   // },
   supabase: {
     redirect: false,
+    url: "https://api.eahassan.me",
+    key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVqYnNmcmtjYndyZXNhZ3lnbWl2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQwMTI4NzcsImV4cCI6MjA0OTU4ODg3N30.VhZt2izywpeQIE7aD-nQt_K5lTsI5GcICMpZ7OrRGwg",
     database: {
       types: "./app/types/database.types.ts",
     },
