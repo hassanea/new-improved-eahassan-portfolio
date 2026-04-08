@@ -187,7 +187,7 @@ export default defineNuxtConfig({
     watcher: "parcel",
   },
   nitro: {
-    preset: "aws-amplify",
+    preset: "netlify-edge",
     esbuild: {
       options: {
         target: "esnext",
