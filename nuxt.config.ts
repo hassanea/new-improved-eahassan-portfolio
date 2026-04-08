@@ -88,6 +88,9 @@ export default defineNuxtConfig({
   // },
   supabase: {
     redirect: false,
+    database: {
+      types: "./app/types/database.types.ts",
+    },
   },
   turnstile: {
     siteKey: "0x4AAAAAAAPzDIvwx9JWPKPi",
