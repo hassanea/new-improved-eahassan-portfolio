@@ -52,8 +52,7 @@ export default defineNuxtConfig({
   hub: {},
   css: ["./app/assets/css/main.css"],
   sentry: {
-    authToken:
-      "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",
+    authToken: process.env.SENTRY_AUTH_TOKEN,
     org: "ev-corp",
     project: "eahassan-portfolio",
   },
