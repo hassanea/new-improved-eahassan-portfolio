@@ -109,7 +109,7 @@
     filter: drop-shadow(2px 4px #aaa);
   }
 
-  .btn::focus {
+  .btn:focus {
     outline: 0;
     border: 3.5px double #23ce6b;
   }
