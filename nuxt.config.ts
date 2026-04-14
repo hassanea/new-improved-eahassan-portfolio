@@ -2,7 +2,7 @@ import tailwindcss from '@tailwindcss/vite';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 // import process from 'node:process';
-
+import { resolve } from 'node:path';
 // const sw = process.env.SW === 'true';
 
 export default defineNuxtConfig({
@@ -228,6 +228,9 @@ export default defineNuxtConfig({
     watcher: 'parcel',
   },
   nitro: {
+    alias: {
+      'pg-native': resolve('./stubs/pg-native.mjs'),
+    },
     preset: 'netlify-edge',
     esbuild: {
       options: {
