@@ -71,6 +71,7 @@
     "@fortawesome/free-regular-svg-icons": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/pro-solid-svg-icons": "^7.2.0",
+    "@shikijs/engine-oniguruma": "^4.0.2",
     "@types/cloudflare-turnstile": "^0.2.2",
     "@types/lodash": "^4.17.24",
     "eslint-plugin-anti-trojan-source": "^1.1.2",

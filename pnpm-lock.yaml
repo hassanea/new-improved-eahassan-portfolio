@@ -126,6 +126,9 @@ importers:
       '@fortawesome/pro-solid-svg-icons':
         specifier: ^7.2.0
         version: 7.2.0
+      '@shikijs/engine-oniguruma':
+        specifier: ^4.0.2
+        version: 4.0.2
       '@types/cloudflare-turnstile':
         specifier: ^0.2.2
         version: 0.2.2
