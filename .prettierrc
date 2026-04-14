@@ -1,0 +1,12 @@
+{
+  "arrowParens": "avoid",
+  "singleQuote": true,
+  "semi": true,
+  "vueIndentScriptAndStyle": true,
+  "tabWidth": 2,
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "tailwindStylesheet": "./app/assets/css/main.css",
+  "tailwindFunctions": ["tw"],
+  "tailwindPreserveWhitespace": true,
+  "tailwindAttributes": [":class"]
+}

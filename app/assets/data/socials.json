@@ -1,0 +1,46 @@
+{
+  "socialLinks": [
+    {
+      "id": "social-goo",
+      "icon": "fa-brands fa-google",
+      "to": "mailto:ehmario@gmail.com",
+      "name": "Google"
+    },
+    {
+      "id": "social-upw",
+      "icon": "fa-brands fa-upwork",
+      "to": "https://www.upwork.com/freelancers/~013c2c44196067ffaf?viewMode=1",
+      "name": "UpWork"
+    },
+    {
+      "id": "social-li",
+      "icon": "fa-brands fa-linkedin",
+      "to": "https://www.linkedin.com/in/evan-hassan-a2bb1ba5/",
+      "name": "LinkedIn"
+    },
+    {
+      "id": "social-git",
+      "icon": "fa-brands fa-github",
+      "to": "https://github.com/hassanea",
+      "name": "GitHub"
+    },
+    {
+      "id": "social-gitlab",
+      "icon": "fa-brands fa-gitlab",
+      "to": "https://gitlab.com/ehmario",
+      "name": "GitLab"
+    },
+    {
+      "id": "social-stack",
+      "icon": "fa-brands fa-stack-overflow",
+      "to": "https://stackoverflow.com/users/8743212/evan-h?tab=profile",
+      "name": "StackOverflow"
+    },
+    {
+      "id": "social-wb",
+      "icon": "fa-solid fa-link",
+      "to": "https://www.eahassan.com/",
+      "name": "My Personal Website"
+    }
+  ]
+}

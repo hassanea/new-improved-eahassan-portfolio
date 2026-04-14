@@ -1,0 +1,101 @@
+{
+  "developer": {
+    "heading": "About Me",
+    "position": "Web Developer",
+    "name": "Evan Hassan",
+    "description": "A dedicated front-end developer specializing in HTML, CSS, JavaScript, and Vue.js seeking opportunities to deliver an exceptional user experience. Committed to continuous learning, refining my skillset and taking on new challenges.",
+    "avatar": "profile-pic.jpg",
+    "bio": "Creative, diligent, detail-oriented individual who is passionate about front-end web development, landing page design, JavaScript, and especially music.  By starting off my day with a coding challenge, I activate my programming mode.  My approach to work and school projects has been to research and analyze the assignment, to collect my ideas, to create a solution, and finally to make a product uniquely crafted for each user.  My objective is to develop websites / web applications that are responsive, accessible, and performant.  HTML5, CSS3, JavaScript, Vue, and Nuxt are my prime tools for creating great web experiences.",
+    "contact": { "title": "Get In Touch!", "message": "Contact me anytime." },
+    "email": "ehmario@gmail.com",
+    "mailTo": "mailto:ehmario@gmail.com",
+    "cellPhone": "(947)-205-0784",
+    "cellPhoneTo": "tel:+9472050784",
+    "resume": { "link": "eahassan-resume.pdf", "name": "resumé-eahassan" }
+  },
+  "education": {
+    "title": "Education",
+    "school": "Oakland University",
+    "degree": {
+      "mark": "Bachelors of Science in",
+      "study": "Information Technology"
+    },
+    "honors": "magnum com laude honors",
+    "graduated": "December 2019",
+    "description": "I attended Oakland University where I pursued a degree in Information Technology, graduating with magnum com laude honors. I had the opportunity to participate in numerous group projects. I am a consistent team member who provides 110% effort to meet project deadlines. During my studies at OU, I received the Udacity Nanodegree scholarship for a front-end web development program affiliated with Google and other Tech companies. Udacity provided the momentum for me to explore the comprehensive details of web development. As a result, I have gained an appreciation for clean responsive design, and strive to implement these principles. I continue coursework to expand my IT skillset."
+  },
+  "workExperience": [
+    {
+      "company": "Self-Employed",
+      "position": "IT Specialist",
+      "years": "February 2023 - Present",
+      "description": "Independent contract position providing IT solutions, website / web app creation,  data analytics, and site performance optimization."
+    },
+    {
+      "company": "Sacred Heart Church",
+      "position": "Web Developer",
+      "years": "April 2018 - Present",
+      "description": "Completed a redesign of the website to deliver an engaging visual layout and improved usability. Continue to maintain site and create necessary enhancements, provide technical support and IT solutions."
+    },
+    {
+      "company": "24G LLC.",
+      "position": "Experiential Developer",
+      "years": "May 2022 - January 2023",
+      "description": "Software development position specializing in websites and web applications for live events, trade shows, and conferences. Developer responsibilites include maintainence, development, and deployment of applications for a diverse array of clients."
+    },
+    {
+      "company": "Appen Ltd.",
+      "position": "Appen Agent",
+      "years": "September 2020 - December 2023",
+      "description": "Independent contract position where projects are assigned that are related to numerous topics including search engine evaulation, website analysis, speech / translation, and social media survey."
+    },
+    {
+      "company": "Reroot Pontiac",
+      "position": "IT Specialist",
+      "years": "September 2019 - December 2019",
+      "description": "Created a website for green infrastructure technologies. Developed a task scheduling web application."
+    }
+  ],
+  "skills": [
+    { "name": "HTML5", "level": "90%" },
+    { "name": "CSS3", "level": "75%" },
+    { "name": "Sass", "level": "10%" },
+    { "name": "Tailwind", "level": "30%" },
+    { "name": "Bootstrap", "level": "30%" },
+    { "name": "JavaScript", "level": "50%" },
+    { "name": "Accessibility", "level": "15%" },
+    { "name": "SQL", "level": "33%" },
+    { "name": "Windows", "level": "50%" },
+    { "name": "macOS", "level": "50%" },
+    { "name": "Linux", "level": "15%" },
+    { "name": "React.js", "level": "15%" },
+    { "name": "Vue.js", "level": "45%" },
+    { "name": "Nuxt.js", "level": "15%" },
+    { "name": "Node.js", "level": "15%" },
+    { "name": "Express.js", "level": "15%" }
+  ],
+  "services": [
+    { "name": "Design & Developement", "icon": "easel.svg" },
+    { "name": "App Development", "icon": "fa-solid fa-code" },
+    { "name": "IT Tech. Support", "icon": "fa-solid fa-computer" }
+  ],
+  "goals": {
+    "title": "My Goals",
+    "learning": [
+      "CSS Grid Layout",
+      "Vue.js",
+      "Pinia.js",
+      "Nuxt.js",
+      "React.js",
+      "Next.js",
+      "Node.js",
+      "Nitro.js",
+      "Accessibility"
+    ],
+    "certifications": [
+      "COMPTIA A+",
+      "Certified Vue.js Developer",
+      "Certified Nuxt.js Developer"
+    ]
+  }
+}

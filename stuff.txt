@@ -1,0 +1,1335 @@
+  
+  
+  VITE_BASE_URL = /
+VITE_APP_TITLE = Evan Hassan's Portfolio
+VITE_APP_AUTHOR = Evan H.
+VITE_APP_DESCRIPTION = Portfolio Site of Evan Hassan
+VITE_APP_KEYWORDS = Evan Hassan, Portfolio, Website, IT specialist, Web Developer, Michigan
+VITE_APP_DOMAIN = https://eahassan.me
+VITE_APP_RESUME_ENDPOINT =  http://192.168.1.46:4200/api/resume
+VITE_APP_WORKS_ENDPOINT =  http://192.168.1.46:4200/api/projects
+VITE_APP_MAIL_ENDPOINT = http://192.168.1.46:4200/api/email
+VITE_APP_IMG_ENDPOINT = https://ik.imagekit.io/twwurltqray
+VITE_APP_IMG_PUBLIC = public_/rLcDyHRXHuzP0zxcgcCA2mSK7M=
+VITE_APP_ENDPOINT = https://cdn.eahassan.me
+VITE_APP_ENDPOINT_2 = https://api.eahassan.me
+VITE_APP_ENDPOINT_3 = https://images.eahassan.com
+VITE_APP_ENDPOINT_4 = https://images.eahassan.com/portfolio/
+VITE_APP_ENDPOINT_5 = https://www.eahassan.com/matomo/
+VITE_APP_SITE_ID = 1
+VITE_APP_IMG_DIR = portfolio/
+VITE_APP_CAPTCHA_SITE_KEY = 0x4AAAAAAAPzDIvwx9JWPKPi
+VITE_APP_CAPTCHA_SECRET_KEY = 0x4AAAAAAAPzDIcBqOWsPenUOMdWS0GsrPk
+VITE_APP_SCRIPT_REQUIRED_MESSAGE = You need to enable JavaScript to run this app.
+FONT_AWESOME_PKG_TOKEN = FFE3FFE4-7D8E-45C4-BD3F-B39281026004
+  
+  
+  <!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>%VITE_APP_TITLE%</title>
+
+
+    <meta name="description" content="%VITE_APP_DESCRIPTION%" />
+    <meta name="keywords" content="%VITE_APP_KEYWORDS%" />
+    <meta property="og:description" content="%VITE_APP_DESCRIPTION%" />
+    <meta property="og:url" content="%VITE_APP_DOMAIN%" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="%VITE_APP_ENDPOINT%/new-eahassan-portfolio-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+
+    <link rel="preconnect" href="%VITE_APP_ENDPOINT%" />
+    <link rel="preconnect" href="%VITE_APP_ENDPOINT_2%" />
+    <link rel="dns-prefetch" href="%VITE_APP_ENDPOINT_3%" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://unpkg.com/" />
+
+    <script type="module" src="/src/main.js" defer></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js" defer></script>
+    <script src="./js/dist/main.min.js" defer></script>
+
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,500&display=swap"
+      as="font"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap"
+      as="font"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+       <link rel="canonical" href="%VITE_APP_DOMAIN%" />
+    <link
+      rel="preload"
+      href="%VITE_APP_ENDPOINT_4%newer-header-showcase.jpg"
+      as="image"
+      imagesrcset="%VITE_APP_ENDPOINT_4%newer-header-showcase-mobile.jpg 320w, %VITE_APP_ENDPOINT_4%newer-header-showcase-tablet.jpg 481w"
+    />
+  </head>
+  <body>
+    <noscript> %VITE_APP_SCRIPT_REQUIRED_MESSAGE% </noscript>
+    <div id="app"></div>
+    <div id="teleport"></div>
+  </body>
+</html> 
+
+// Supabase Project DB Password: arzuWyngGizi20!
+
+  //   const routeDepth = computed(() => {
+  //     if (!items.length === 0) return 0;
+  //     const depth = items
+  //       .map(item => {
+  //         if (item.path === '/') return 1;
+  //         else {
+  //           return item.path.split('/').length;
+  //         }
+  //       })
+  //       .find(el => el === currentPath.split('/').length);
+  //     return depth;
+  //   });
+
+
+
+
+  // colorMode.value =
+  // (window?.localStorage && localStorage?.getItem('color-mode')) ?? 'light';
+
+
+
+ // setColorModeToStorage sets and stores the current color mode to localStorage.
+
+  const setColorModeToStorage = (colorScheme: string) => {
+    return window && window?.localStorage
+      ? colorMode.value = colorScheme
+      // localStorage?.setItem('color-mode', colorScheme)
+      : null;
+  };
+
+
+    // Sets up an immediate watcher to run initially and anytime when colorMode's value is changed then calls setColorModeToStorage to set and update the color scheme to localStorage.
+
+  const unWatch = watch(
+    colorMode,
+    value => {
+      return value === 'dark'
+        ? colorMode.value = 'dark'
+        : colorMode.value = 'light';
+        // setColorModeToStorage('dark')
+        // setColorModeToStorage('light')
+    },
+    { immediate: true },
+  );
+
+
+    // const hasColorModeInStorage = (window?.localStorage && localStorage?.getItem('color-mode'));
+
+     // setColorModeToStorage sets and stores the current color mode to localStorage.
+
+//  const setColorModeToStorage = (colorScheme: string) => {
+//   return window && window?.localStorage
+//     ? localStorage?.setItem('color-mode', colorScheme)
+//     : null;
+// };
+
+// if(hasColorModeInStorage) {
+//   colorMode.value = hasColorModeInStorage;
+// } 
+// else {
+//   colorMode.value = 'light';
+// }
+
+  // import { usePortfolioStore } from '~/stores/usePortfolioStore';
+
+  // const store = usePortfolioStore();
+
+  // const { colorScheme } = storeToRefs(store);
+
+  // const currentMode = useState('color-mode');
+  // const hasToggled = useState('color-switch'); 
+
+
+// Navbar
+      <!-- ref="trapRef" -->
+    <!-- v-if="!showMobileMenu" -->
+    <!-- <div class="navbar-brand">
+      <nuxt-link to="#home">
+        <nuxt-img
+          :src="setLogo"
+          alt="Logo"
+          provider="imagekit"
+          width="55"
+          height="55"
+          class="navbar-brand-logo"
+        />
+      </nuxt-link>
+    </div> -->
+
+
+  // @ts-ignore
+  // import { useColorMode } from '@/composables/useColorMode';
+  // const { colorOption, setColorTheme, colorSchemeHandler, unWatchColor } = useColorMode();
+
+  // On client side render and initial component mount, call only once setColorTheme function to initial colorMode state and its associated side effects.
+  onMounted(() => {
+    console.log('Mounted');
+    callOnce('globalState', () => {
+      // setColorTheme(colorOption.value);
+      setReduceMotion(motionOption.value);
+      localeCookie.value = currentLocale.value;
+    });
+
+    onUnmounted(() => {
+      // Reset global states
+          // colorSchemeHandler();
+    // unWatchColor();
+          // const toggled = useState('color-switch');
+              motionHandler();
+    // // toggled.value = false;
+    // // motionToggle.value = false;
+    });
+
+    
+    // const { currency } = useCurrency(); 
+//     const { data: currencyData } = await useFetch('/api/currency/USD');
+//      // @ts-ignore
+//     currency.value = currencyData;
+
+
+          <!-- bgrid-halves s-bgrid-thirds clearfix 
+          =>  
+          <div
+            id="portfolio-wrapper"
+           class="grid grid-cols-1 md:grid-cols-2"> </div> -->
+
+
+// index.vue | Homepage 
+  //   const developer = ref({});
+  //   const education = ref({});
+  //   const workExperience = ref([]);
+  //   const skills = ref([]);
+  //   const socialLinks = ref([]);
+
+  //   const { data: resume } = await useFetch('/api/resume', {
+  //     transform: resume => {
+  //       const {
+  //         developer: dev,
+  //         education: edu,
+  //         workExperience: experiences,
+  //         skills: talents,
+  //         socialsLinks: urls,
+  //       } = resume;
+  //       developer.value = dev;
+  //       education.value = edu;
+  //       workExperience.value = experiences;
+  //       skills.value = talents;
+  //       socialLinks.value = urls;
+  //     },
+  //   });
+
+   <!-- <base-video ref="video" variant="header" :sources="videoSource.medias" :poster="videoSource.image" :is-mobile /> -->
+
+
+     // const progress = ref(props.currentValue);
+  // let progressTimerHandler = null;
+  // const incrementProgressBar = () => {
+  //   progress.value += 10;
+  // };
+  
+
+  // onMounted(() => {
+  //   if(progress.value !== max) progressTimerHandler = setInterval(incrementProgressBar, 500);
+  //   else clearInterval(progressTimerHandler);
+  // });
+
+  // onUnmounted(() => {
+  //   progress.value = props.currentValue;
+  // });
+
+
+
+
+  //       <meta property="fb:app_id" content="818889048795596" />
+  //       <meta property="fb:page_id" content="114688866599926" />
+
+  //       <meta name="twitter:card" content="summary" />
+  //       <meta name="twitter:site" content="@sacredHeart7009" />
+  //       <meta name="twitter:url" content="https://www.esacredheart.org" />
+  //       <meta name="twitter:title" content="Sacred Heart Catholic Church" />
+  //       <meta name="twitter:description" content="Sacred Heart Catholic Church's Site" />
+  //       <meta name="twitter:image" content="https://images.esacredheart.org/twitter-card-logo.jpg" />
+
+        <link rel="dns-prefetch" href="https://s3.amazonaws.com" />
+        <link rel="preconnect" href="https://cdn.esacredheart.org" />
+        <link rel="preconnect" href="https://images.esacredheart.org" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="dns-prefetch" href="https://kit.fontawesome.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.clarity.ms/" />
+        <link rel="dns-prefetch" href="https://ajax.googleapis.com" />
+
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&display=swap" as="style" />
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" as="style" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" />
+        <link rel="preload" href="https://cdn.esacredheart.org/css/dist/bootstrap.min.prod.css" as="style" />
+        <link href="https://cdn.esacredheart.org/css/dist/bootstrap.min.prod.css" rel="stylesheet" />
+        <link rel="preload" href="https://cdn.esacredheart.org/css/dist/main.min.css" as="style" />
+        <link rel="stylesheet" href="https://cdn.esacredheart.org/css/dist/main.min.css" />
+        <link rel="preload" href="https://cdn.esacredheart.org/css/dist/owl.carousel.min.prod.css" as="style" />
+        <link rel="stylesheet" href="https://cdn.esacredheart.org/css/dist/owl.carousel.min.prod.css" />
+        <link rel="preload" href="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" as="script" />
+        <link rel="preload" href="https://cdn.esacredheart.org/js/dist/bootstrap.bundle.min.js" as="script" />
+        <link rel="preload" href="https://cdn.esacredheart.org/js/dist/owl.carousel.min.js" as="script" />
+        <link rel="preload" href="https://cdn.esacredheart.org/js/dist/main.min.js" as="script" />
+        <link
+            rel="preload"
+            href="https://images.esacredheart.org/header-showcase-desktop.jpg"
+            imagesrcset="https://images.esacredheart.org/header-showcase-mobile.jpg 320w, https://images.esacredheart.org/header-showcase-tablet.jpg 481w"
+            as="image"
+        />
+        <link rel="preload" href="https://images.esacredheart.org/stained-glass.jpg" imagesrcset="https://images.esacredheart.org/stained-glass.webp 1x" as="image" />
+        <link rel="preload" href="https://images.esacredheart.org/pastel-bg.jpg" as="image" />
+        <link
+            rel="preload"
+            href="https://images.esacredheart.org/sacred-heart-statue.jpg"
+            imagesrcset="https://images.esacredheart.org/sacred-heart-statue-tablet.jpg 768w, https://images.esacredheart.org/sacred-heart-statue-mobile.jpg 320w"
+            as="image"
+        />
+
+
+
+// const dev = ref({});
+  // const edu = ref();
+  // const experiences = ref([]);
+  // const skillSet = ref([]);
+  // const careerGoals = ref([]);
+
+//   const { data: resume } = await useFetch('/api/resume', { 
+//   transform: (resume) => {
+//     const {developer, education, workExperience, skills, goals} = resume;
+//     dev.value = developer;
+//     edu.value = education;
+//     // @ts-ignore
+//     experiences.value = workExperience;
+//     // @ts-ignore
+//     skillSet.value = skills;
+//     // @ts-ignore
+//     careerGoals.value = goals;
+//     return { dev, edu, experiences, skillSet, careerGoals };
+//   }
+// });
+
+
+
+
+
+
+// Prettier Plugin for Tailwind CSS Reference: https://github.com/tailwindlabs/prettier-plugin-tailwindcss
+// https://stackoverflow.com/questions/70704377/default-colors-given-in-tailwind-documentation-are-not-working
+
+// @ts-ignore
+import type { Config } from "tailwindcss";
+// @ts-ignore
+// import colors from "tailwindcss/colors";
+import colors from "@nuxtjs/tailwindcss";
+export default (<Partial<Config>>{
+  content: [
+    "./components/**/*.{js,vue,ts,jsx,tsx}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+    "./app.vue",
+    "./error.vue",
+  ],
+  darkMode: [
+    "variant",
+    [
+      "@media (prefers-color-scheme: dark) { &:not(.light *) }",
+      "&:is(.dark *)",
+    ],
+  ],
+  theme: {
+    fontFamily: {
+      sans: ["Open Sans", "sans-serif"],
+    },
+    colors: {
+      primary: "#475867",
+      "primary-light": "#6b7985",
+      secondary: "#2c4e6d",
+      tertiary: "#6d9bc3",
+      quaternary: "#0F9397",
+      quinary: "#0a4aaa",
+      alternative: "#DBE9F4",
+      light: "#fcfbfc",
+      dark: "#000814",
+      heading: "#313131",
+      selection: "#9ec6d6",
+      linkedin: "#0976b4",
+      github: "#c9a0ff",
+      gitlab: "#e24329",
+      upwork: "#66FF00",
+      website: "#00008b",
+      stackoverflow: "#ffa500",
+    },
+    extend: {
+      backgroundImage: {
+        google:
+          "linear-gradient(#4285f4, transparent), linear-gradient(200deg, #db4437, #f4b400, #0f9d58)",
+        firebase: "linear-gradient(#FFA611, #F5820D, #FFCB2B)",
+      },
+      colors: {
+        ...colors,
+      },
+      fontFamily: {
+        sans2: ["Roboto", "sans-serif"],
+      },
+    },
+  },
+  plugins: [],
+}) satisfies Config;
+
+
+// REFERENCE: https://nodemailer.com/transports/ses/  https://stevenpcurtis.medium.com/sending-emails-with-aws-ses-nodejs-and-nodemailer-368b8f891467
+// import nodeMailer from 'nodemailer';
+
+// import aws from '@aws-sdk/client-ses';
+
+export default defineEventHandler(async event => {
+  // Parses the incoming response body and serialize it as an object.
+  // From JSON object to JS object
+  const { name, subject, email, message } = await readBody(event);
+  const { primaryEmail, apiUser, apiPass } = useRuntimeConfig();
+
+  // service, host, port
+
+  // Creates a instance of AWS Simple Email Service SDK
+  const ses = new aws.SES({
+    apiVersion: '2010-12-01',
+    region: 'us-east-2',
+  });
+
+  // Transport configuration object with SMTP connection URL
+  const transport = {
+    // AWS SES property with SES instance, aws import
+    SES: { ses, aws },
+    // sendingRate: 1, // 1 E-Mail sent out per sec
+    service: 'SES-US-EAST-2', // Region for AWS SES
+    port: 465,
+    secure: true,
+    requireTLS: true,
+    logger: true,
+    // debug: true,
+    auth: {
+      user: apiUser,
+      pass: apiPass,
+    },
+    tls: {
+      // Do not fail on invalid certs!
+      rejectUnauthorized: false,
+    },
+  };
+
+  // The object that is going to able to send mail
+  const transporter = nodeMailer.createTransport(transport);
+
+  transporter.verify((error, success) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(`📬 Mailer listening... ${success}`);
+    }
+  });
+
+  // E-Mail configuration object
+  const mail = {
+    from: `Evan Hassan <${primaryEmail}>`,
+    to: `${name} <${email}>`,
+    bcc: primaryEmail,
+    subject: subject,
+    html: `<!DOCTYPE html>
+    <html>
+
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>E.H. Portfolio</title>
+        <style>
+            /* -------------------------------------
+              GLOBAL RESETS
+          ------------------------------------- */
+
+            /*All the styling goes here*/
+
+            img {
+                border: none;
+                -ms-interpolation-mode: bicubic;
+                max-width: 100%;
+            }
+
+            .logo {
+                margin: 0 auto;
+                display: block;
+            }
+
+            body {
+                background-color: #f6f6f6;
+                font-family: sans-serif;
+                -webkit-font-smoothing: antialiased;
+                font-size: 14px;
+                line-height: 1.4;
+                margin: 0;
+                padding: 0;
+                -ms-text-size-adjust: 100%;
+                -webkit-text-size-adjust: 100%;
+            }
+
+            p {
+                text-align: center;
+            }
+
+            table {
+                border-collapse: separate;
+                mso-table-lspace: 0pt;
+                mso-table-rspace: 0pt;
+                width: 100%;
+            }
+
+            table td {
+                font-family: sans-serif;
+                font-size: 14px;
+                vertical-align: top;
+            }
+
+            /* -------------------------------------
+              BODY & CONTAINER
+          ------------------------------------- */
+
+            .body {
+                background-color: #f6f6f6;
+                width: 100%;
+            }
+
+            /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
+            .container {
+                display: block;
+                margin: 0 auto !important;
+                /* makes it centered */
+                max-width: 580px;
+                padding: 10px;
+                width: 580px;
+            }
+
+            /* This should also be a block element, so that it will fill 100% of the .container */
+            .content {
+                box-sizing: border-box;
+                display: block;
+                margin: 0 auto;
+                max-width: 580px;
+                padding: 10px;
+            }
+
+            /* -------------------------------------
+              HEADER, FOOTER, MAIN
+          ------------------------------------- */
+            .main {
+                background: #ffffff;
+                border-radius: 3px;
+                width: 100%;
+            }
+
+            .wrapper {
+                box-sizing: border-box;
+                padding: 20px;
+            }
+
+            .content-block {
+                padding-bottom: 10px;
+                padding-top: 10px;
+            }
+
+            .footer {
+                clear: both;
+                margin-top: 10px;
+                text-align: center;
+                width: 100%;
+            }
+
+            .footer td,
+            .footer p,
+            .footer span,
+            .footer a {
+                color: #999999;
+                font-size: 12px;
+                text-align: center;
+            }
+
+            /* -------------------------------------
+              TYPOGRAPHY
+          ------------------------------------- */
+            h1,
+            h2,
+            h3,
+            h4 {
+                color: #000000;
+                font-family: sans-serif;
+                font-weight: 400;
+                line-height: 1.4;
+                margin: 0;
+                margin-bottom: 30px;
+            }
+
+            h1 {
+                font-size: 35px;
+                font-weight: 300;
+                text-align: center;
+                text-transform: capitalize;
+            }
+
+            p,
+            ul,
+            ol {
+                font-family: sans-serif;
+                font-size: 14px;
+                font-weight: normal;
+                margin: 0;
+                margin-bottom: 15px;
+            }
+
+            p li,
+            ul li,
+            ol li {
+                list-style-position: inside;
+                margin-left: 5px;
+            }
+
+            a {
+                color: #3498db;
+                text-decoration: underline;
+            }
+
+            /* -------------------------------------
+              BUTTONS
+          ------------------------------------- */
+            .btn {
+                box-sizing: border-box;
+                width: 100%;
+            }
+
+            .btn>tbody>tr>td {
+                padding-bottom: 15px;
+            }
+
+            .btn table {
+                width: auto;
+            }
+
+            .btn table td {
+                background-color: #ffffff;
+                border-radius: 5px;
+                text-align: center;
+            }
+
+            .btn a {
+                background-color: #ffffff;
+                border: solid 1px #3498db;
+                border-radius: 5px;
+                box-sizing: border-box;
+                color: #3498db;
+                cursor: pointer;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: bold;
+                margin: 0;
+                padding: 12px 25px;
+                text-decoration: none;
+                text-transform: capitalize;
+            }
+
+            .btn-primary table td {
+                background-color: #3498db;
+            }
+
+            .btn-primary a {
+                background-color: #3498db;
+                border-color: #3498db;
+                color: #ffffff;
+            }
+
+            /* -------------------------------------
+              OTHER STYLES THAT MIGHT BE USEFUL
+          ------------------------------------- */
+            .last {
+                margin-bottom: 0;
+            }
+
+            .first {
+                margin-top: 0;
+            }
+
+            .align-center {
+                text-align: center;
+            }
+
+            .align-right {
+                text-align: right;
+            }
+
+            .align-left {
+                text-align: left;
+            }
+
+            .clear {
+                clear: both;
+            }
+
+            .mt0 {
+                margin-top: 0;
+            }
+
+            .mb0 {
+                margin-bottom: 0;
+            }
+
+            .preheader {
+                color: transparent;
+                display: none;
+                height: 0;
+                max-height: 0;
+                max-width: 0;
+                opacity: 0;
+                overflow: hidden;
+                mso-hide: all;
+                visibility: hidden;
+                width: 0;
+            }
+
+            .powered-by a {
+                text-decoration: none;
+            }
+
+            hr {
+                border: 0;
+                border-bottom: 1px solid #f6f6f6;
+                margin: 20px 0;
+            }
+
+            /* -------------------------------------
+              RESPONSIVE AND MOBILE FRIENDLY STYLES
+          ------------------------------------- */
+            @media only screen and (max-width: 620px) {
+                table[class=body] h1 {
+                    font-size: 28px !important;
+                    margin-bottom: 10px !important;
+                }
+
+                table[class=body] p,
+                table[class=body] ul,
+                table[class=body] ol,
+                table[class=body] td,
+                table[class=body] span,
+                table[class=body] a {
+                    font-size: 16px !important;
+                }
+
+                table[class=body] .wrapper,
+                table[class=body] .article {
+                    padding: 10px !important;
+                }
+
+                table[class=body] .content {
+                    padding: 0 !important;
+                }
+
+                table[class=body] .container {
+                    padding: 0 !important;
+                    width: 100% !important;
+                }
+
+                table[class=body] .main {
+                    border-left-width: 0 !important;
+                    border-radius: 0 !important;
+                    border-right-width: 0 !important;
+                }
+
+                table[class=body] .btn table {
+                    width: 100% !important;
+                }
+
+                table[class=body] .btn a {
+                    width: 100% !important;
+                }
+
+                table[class=body] .img-responsive {
+                    height: auto !important;
+                    max-width: 100% !important;
+                    width: auto !important;
+                }
+            }
+
+            /* -------------------------------------
+              PRESERVE THESE STYLES IN THE HEAD
+          ------------------------------------- */
+            @media all {
+                .ExternalClass {
+                    width: 100%;
+                }
+
+                .ExternalClass,
+                .ExternalClass p,
+                .ExternalClass span,
+                .ExternalClass font,
+                .ExternalClass td,
+                .ExternalClass div {
+                    line-height: 100%;
+                }
+
+                .apple-link a {
+                    color: inherit !important;
+                    font-family: inherit !important;
+                    font-size: inherit !important;
+                    font-weight: inherit !important;
+                    line-height: inherit !important;
+                    text-decoration: none !important;
+                }
+
+                #MessageViewBody a {
+                    color: inherit;
+                    text-decoration: none;
+                    font-size: inherit;
+                    font-family: inherit;
+                    font-weight: inherit;
+                    line-height: inherit;
+                }
+
+                .btn-primary table td:hover {
+                    background-color: #34495e !important;
+                }
+
+                .btn-primary a:hover {
+                    background-color: #34495e !important;
+                    border-color: #34495e !important;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
+            <tr>
+                <td>&nbsp;</td>
+                <td class="container">
+                    <div class="content">
+
+                        <!-- START CENTERED WHITE CONTAINER -->
+                        <table role="presentation" class="main">
+
+                            <!-- START MAIN CONTENT AREA -->
+                            <tr>
+                                <td class="wrapper">
+                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                            <img src="cid:unique@eahassan.me" alt="EH's logo" width="200" height="200" class="logo"/>
+                                                <hr/>
+                                                <p>${message}</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <!-- END MAIN CONTENT AREA -->
+                        </table>
+                        <!-- END CENTERED WHITE CONTAINER -->
+
+                        <!-- START FOOTER -->
+                        <div class="footer">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="content-block powered-by">
+                                        Powered by <a href="http://htmlemail.io">HTMLemail</a>.
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- END FOOTER -->
+
+                    </div>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+    </body>
+    </html>`,
+  };
+
+  const thankMail = {
+    from: `Evan Hassan <${primaryEmail}>`,
+    to: `${name} <${email}>`,
+    subject: 'Thank You For Your Message',
+    html: `<!DOCTYPE html>
+    <html>
+
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>E.H. Portfolio</title>
+        <style>
+            /* -------------------------------------
+              GLOBAL RESETS
+          ------------------------------------- */
+
+            /*All the styling goes here*/
+
+            img {
+                border: none;
+                -ms-interpolation-mode: bicubic;
+                max-width: 100%;
+            }
+
+            .logo {
+                margin: 0 auto;
+                display: block;
+            }
+
+            body {
+                background-color: #f6f6f6;
+                font-family: sans-serif;
+                -webkit-font-smoothing: antialiased;
+                font-size: 14px;
+                line-height: 1.4;
+                margin: 0;
+                padding: 0;
+                -ms-text-size-adjust: 100%;
+                -webkit-text-size-adjust: 100%;
+            }
+
+            p, pre {
+                text-align: center;
+            }
+
+            table {
+                border-collapse: separate;
+                mso-table-lspace: 0pt;
+                mso-table-rspace: 0pt;
+                width: 100%;
+            }
+
+            table td {
+                font-family: sans-serif;
+                font-size: 14px;
+                vertical-align: top;
+            }
+
+            /* -------------------------------------
+              BODY & CONTAINER
+          ------------------------------------- */
+
+            .body {
+                background-color: #f6f6f6;
+                width: 100%;
+            }
+
+            /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
+            .container {
+                display: block;
+                margin: 0 auto !important;
+                /* makes it centered */
+                max-width: 580px;
+                padding: 10px;
+                width: 580px;
+            }
+
+            /* This should also be a block element, so that it will fill 100% of the .container */
+            .content {
+                box-sizing: border-box;
+                display: block;
+                margin: 0 auto;
+                max-width: 580px;
+                padding: 10px;
+            }
+
+            /* -------------------------------------
+              HEADER, FOOTER, MAIN
+          ------------------------------------- */
+            .main {
+                background: #ffffff;
+                border-radius: 3px;
+                width: 100%;
+            }
+
+            .wrapper {
+                box-sizing: border-box;
+                padding: 20px;
+            }
+
+            .content-block {
+                padding-bottom: 10px;
+                padding-top: 10px;
+            }
+
+            .footer {
+                clear: both;
+                margin-top: 10px;
+                text-align: center;
+                width: 100%;
+            }
+
+            .footer td,
+            .footer p,
+            .footer span,
+            .footer a {
+                color: #999999;
+                font-size: 12px;
+                text-align: center;
+            }
+
+            /* -------------------------------------
+              TYPOGRAPHY
+          ------------------------------------- */
+            h1,
+            h2,
+            h3,
+            h4 {
+                color: #000000;
+                font-family: sans-serif;
+                font-weight: 400;
+                line-height: 1.4;
+                margin: 0;
+                margin-bottom: 30px;
+            }
+
+            h1 {
+                font-size: 35px;
+                font-weight: 300;
+                text-align: center;
+                text-transform: capitalize;
+            }
+
+            p,
+            pre,
+            ul,
+            ol {
+                font-family: sans-serif;
+                font-size: 14px;
+                font-weight: normal;
+                margin: 0;
+                margin-bottom: 15px;
+            }
+
+            p li,
+            ul li,
+            ol li {
+                list-style-position: inside;
+                margin-left: 5px;
+            }
+
+            a {
+                color: #3498db;
+                text-decoration: underline;
+            }
+
+            /* -------------------------------------
+              BUTTONS
+          ------------------------------------- */
+            .btn {
+                box-sizing: border-box;
+                width: 100%;
+            }
+
+            .btn>tbody>tr>td {
+                padding-bottom: 15px;
+            }
+
+            .btn table {
+                width: auto;
+            }
+
+            .btn table td {
+                background-color: #ffffff;
+                border-radius: 5px;
+                text-align: center;
+            }
+
+            .btn a {
+                background-color: #ffffff;
+                border: solid 1px #3498db;
+                border-radius: 5px;
+                box-sizing: border-box;
+                color: #3498db;
+                cursor: pointer;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: bold;
+                margin: 0;
+                padding: 12px 25px;
+                text-decoration: none;
+                text-transform: capitalize;
+            }
+
+            .btn-primary table td {
+                background-color: #3498db;
+            }
+
+            .btn-primary a {
+                background-color: #3498db;
+                border-color: #3498db;
+                color: #ffffff;
+            }
+
+            /* -------------------------------------
+              OTHER STYLES THAT MIGHT BE USEFUL
+          ------------------------------------- */
+            .last {
+                margin-bottom: 0;
+            }
+
+            .first {
+                margin-top: 0;
+            }
+
+            .align-center {
+                text-align: center;
+            }
+
+            .align-right {
+                text-align: right;
+            }
+
+            .align-left {
+                text-align: left;
+            }
+
+            .clear {
+                clear: both;
+            }
+
+            .mt0 {
+                margin-top: 0;
+            }
+
+            .mb0 {
+                margin-bottom: 0;
+            }
+
+            .preheader {
+                color: transparent;
+                display: none;
+                height: 0;
+                max-height: 0;
+                max-width: 0;
+                opacity: 0;
+                overflow: hidden;
+                mso-hide: all;
+                visibility: hidden;
+                width: 0;
+            }
+
+            .powered-by a {
+                text-decoration: none;
+            }
+
+            hr {
+                border: 0;
+                border-bottom: 1px solid #f6f6f6;
+                margin: 20px 0;
+            }
+
+            /* -------------------------------------
+              RESPONSIVE AND MOBILE FRIENDLY STYLES
+          ------------------------------------- */
+            @media only screen and (max-width: 620px) {
+                table[class=body] h1 {
+                    font-size: 28px !important;
+                    margin-bottom: 10px !important;
+                }
+
+                table[class=body] p,
+                table[class=body] ul,
+                table[class=body] ol,
+                table[class=body] td,
+                table[class=body] span,
+                table[class=body] a {
+                    font-size: 16px !important;
+                }
+
+                table[class=body] .wrapper,
+                table[class=body] .article {
+                    padding: 10px !important;
+                }
+
+                table[class=body] .content {
+                    padding: 0 !important;
+                }
+
+                table[class=body] .container {
+                    padding: 0 !important;
+                    width: 100% !important;
+                }
+
+                table[class=body] .main {
+                    border-left-width: 0 !important;
+                    border-radius: 0 !important;
+                    border-right-width: 0 !important;
+                }
+
+                table[class=body] .btn table {
+                    width: 100% !important;
+                }
+
+                table[class=body] .btn a {
+                    width: 100% !important;
+                }
+
+                table[class=body] .img-responsive {
+                    height: auto !important;
+                    max-width: 100% !important;
+                    width: auto !important;
+                }
+            }
+
+            /* -------------------------------------
+              PRESERVE THESE STYLES IN THE HEAD
+          ------------------------------------- */
+            @media all {
+                .ExternalClass {
+                    width: 100%;
+                }
+
+                .ExternalClass,
+                .ExternalClass p,
+                .ExternalClass span,
+                .ExternalClass font,
+                .ExternalClass td,
+                .ExternalClass div {
+                    line-height: 100%;
+                }
+
+                .apple-link a {
+                    color: inherit !important;
+                    font-family: inherit !important;
+                    font-size: inherit !important;
+                    font-weight: inherit !important;
+                    line-height: inherit !important;
+                    text-decoration: none !important;
+                }
+
+                #MessageViewBody a {
+                    color: inherit;
+                    text-decoration: none;
+                    font-size: inherit;
+                    font-family: inherit;
+                    font-weight: inherit;
+                    line-height: inherit;
+                }
+
+                .btn-primary table td:hover {
+                    background-color: #34495e !important;
+                }
+
+                .btn-primary a:hover {
+                    background-color: #34495e !important;
+                    border-color: #34495e !important;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
+            <tr>
+                <td>&nbsp;</td>
+                <td class="container">
+                    <div class="content">
+
+                        <!-- START CENTERED WHITE CONTAINER -->
+                        <table role="presentation" class="main">
+
+                            <!-- START MAIN CONTENT AREA -->
+                            <tr>
+                                <td class="wrapper">
+                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                            <img src="cid:unique@eahassan.me" alt="EH's logo" width="200" height="200" class="logo"/>
+                                                <hr/>
+                                                <pre>Hello,
+                                                Thank you for contacting me. I'll get with back with you as soon as I can.
+
+                                                Regards,
+                                                -Evan Hassan
+                                                </pre>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <!-- END MAIN CONTENT AREA -->
+                        </table>
+                        <!-- END CENTERED WHITE CONTAINER -->
+
+                        <!-- START FOOTER -->
+                        <div class="footer">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="content-block powered-by">
+                                        Powered by <a href="http://htmlemail.io">HTMLemail</a>.
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- END FOOTER -->
+
+                    </div>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+    </body>
+    </html>`,
+  };
+
+  // eslint-disable-next-line
+
+  const sendEmail = function (emailMsg: object) {
+    // Sends E-Mails
+    transporter.sendMail(emailMsg, (err, data) => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log(data);
+      }
+    });
+  };
+  const emails = [mail, thankMail];
+
+  emails.forEach(email => sendEmail(email));
+});
+  routeRules: {
+    '/api/**': {
+      proxy: 'http://localhost:3000/**',
+    },
+  },
+
+  certifications: ["COMPTIA Linux+", "COMPTIA Networking+"]

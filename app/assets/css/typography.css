@@ -20,18 +20,23 @@
   h1 {
     @apply mb-3 text-4-5xl leading-normal tracking-[-1px];
   }
+
   h2 {
     @apply mb-1.5 text-3-5xl leading-normal;
   }
+
   h3 {
     @apply text-2-5xl leading-normal mb-3;
   }
+
   h4 {
     @apply text-2xl leading-normal mb-1.5;
   }
+
   h5 {
     @apply text-xl leading-normal;
   }
+
   h6 {
     @apply text-base leading-normal;
   }
