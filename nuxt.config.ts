@@ -288,7 +288,7 @@ export default defineNuxtConfig({
     },
     workbox: {
       globPatterns: ['**/*.{js,css,html,jpg,png,webp,avif,svg,pdf,ico}'],
-      maximumFileSizeToCacheInBytes: 2048, // 2GB
+      maximumFileSizeToCacheInBytes: 10240, // 10GB
     },
     injectManifest: {
       globPatterns: ['**/*.{js,css,html,jpg,png,webp,avif,svg,pdf,ico}'],
