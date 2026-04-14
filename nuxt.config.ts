@@ -231,7 +231,7 @@ export default defineNuxtConfig({
     alias: {
       'pg-native': resolve('./stubs/pg-native.mjs'),
     },
-    preset: 'netlify-edge',
+    preset: 'netlify',
     esbuild: {
       options: {
         target: 'esnext',
