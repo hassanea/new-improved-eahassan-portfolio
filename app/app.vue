@@ -9,10 +9,6 @@
       </NuxtLayout>
     </UApp>
 
-    <div v-show="$pwa?.needRefresh">
-      <span>New content available, click on reload button to update.</span>
-    </div>
-
     <div
       class="absolute bottom-[1%] left-[10%] z-300 rounded-xl bg-light text-center"
     >
@@ -128,7 +124,6 @@
   import { useTransparency } from '@/composables/useTransparency';
   import BaseSkipLink from '@/components/BaseSkipLink.vue';
   import BaseDropDownMenu from '@/components/BaseDropDownMenu.vue';
-  import { NuxtPwaManifest } from '#components';
   // import { usePortfolioStore } from '../stores/usePortfolioStore';
 
   // const store = usePortfolioStore();
@@ -145,7 +140,6 @@
   const isTransparent = useState('tranparent-switch');
 
   const toast = useToast();
-  const { $pwa } = useNuxtApp();
   const displayCookieBanner = ref(false);
   const showA11y = ref(false);
   const currentRoute = useRoute();
@@ -179,12 +173,6 @@
     callOnce('globalState', () => {
       localeCookie.value = currentLocale.value;
     });
-    if ($pwa?.offlineReady) {
-      toast.add({
-        title: 'Work Offline?',
-        description: 'App ready to work offline.',
-      });
-    }
     useHead({
       titleTemplate(title) {
         return title

@@ -106,46 +106,6 @@
                   </template>
                 </lazy-base-button>
 
-                <lazy-base-button
-                  variant="btn-no-mg"
-                  @click="$pwa?.install()"
-                  @keydown.enter="$pwa?.install()"
-                  label="Install PWA App"
-                  v-tooltip.left="'Install App'"
-                >
-                  <template #icon>
-                    <lazy-font-awesome icon="fa-solid fa-desktop-arrow-down" />
-                  </template>
-                </lazy-base-button>
-
-                <lazy-base-button
-                  variant="btn-no-mg"
-                  @click="$pwa?.updateServiceWorker()"
-                  @keydown.enter="$pwa?.updateServiceWorker()"
-                  label="Reload for New Data"
-                  v-tooltip.left="'Reload'"
-                >
-                  <template #icon>
-                    <lazy-font-awesome icon="fa-solid fa-arrow-rotate-right" />
-                  </template>
-                </lazy-base-button>
-
-                <ClientOnly>
-                  <span>
-                    PWA
-                    {{ $pwa?.isPWAInstalled ? 'Installed' : 'Not Installed' }}:
-                    <nuxt-img
-                      v-if="$pwa?.isPWAInstalled"
-                      provider="imagekit"
-                      src="/pwa-logo.svg"
-                      alt=""
-                      width="20"
-                      height="20"
-                    />
-                    <font-awesome v-else icon="fa-solid fa-xmark" />
-                  </span>
-                </ClientOnly>
-
                 <lazy-base-switch
                   :label="setColorSwitchLabel"
                   :model-value="isDark"
