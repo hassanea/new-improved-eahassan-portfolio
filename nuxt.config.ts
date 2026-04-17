@@ -1,9 +1,9 @@
 import tailwindcss from '@tailwindcss/vite';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-// import process from 'node:process';
+import process from 'node:process';
 import { resolve } from 'node:path';
-// const sw = process.env.SW === 'true';
+const sw = process.env.SW === 'true';
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -245,71 +245,71 @@ export default defineNuxtConfig({
     // you don't need to include this: only for testing purposes
     buildDate: new Date().toISOString(),
   },
-  // pwa: {
-  //   strategies: sw ? 'injectManifest' : 'generateSW',
-  //   srcDir: sw ? 'service-worker' : undefined,
-  //   filename: sw ? 'sw.ts' : undefined,
-  //   registerType: 'autoUpdate',
-  //   manifest: {
-  //     name: "Evan Hassan's Portfolio",
-  //     short_name: "Evan H.'s Portfolio",
-  //     display: 'standalone',
-  //     theme_color: '#2c4e6d',
-  //     background_color: '#ffffff',
-  //     icons: [
-  //       {
-  //         src: './favicon.ico',
-  //         sizes: '16x16',
-  //         type: 'image/x-icon',
-  //       },
-  //       {
-  //         src: './icons/apple-touch-icon-ipad-76x76.png',
-  //         type: 'image/png',
-  //         sizes: '57x57',
-  //       },
-  //       {
-  //         src: './icons/android-icon-192x192.png',
-  //         sizes: '192x192',
-  //         type: 'image/png',
-  //       },
-  //       // {
-  //       //   src: 'pwa-512x512.png',
-  //       //   sizes: '512x512',
-  //       //   type: 'image/png',
-  //       // },
-  //       // {
-  //       //   src: 'pwa-512x512.png',
-  //       //   sizes: '512x512',
-  //       //   type: 'image/png',
-  //       //   purpose: 'any maskable',
-  //       // },
-  //     ],
-  //   },
-  //   workbox: {
-  //     globPatterns: ['**/*.{js,css,html,jpg,png,svg,ico}'],
-  //     maximumFileSizeToCacheInBytes: 2048, // 2GB
-  //   },
-  //   injectManifest: {
-  //     globPatterns: ['**/*.{js,css,html,jpg,png,svg,ico}'],
-  //   },
-  //   client: {
-  //     installPrompt: true,
-  //     // you don't need to include this: only for testing purposes
-  //     // if enabling periodic sync for update use 1 hour or so (periodicSyncForUpdates: 3600)
-  //     periodicSyncForUpdates: 3600,
-  //   },
-  //   experimental: {
-  //     // @ts-ignore
-  //     includeAllowlist: true,
-  //   },
-  //   devOptions: {
-  //     // enabled: true,
-  //     suppressWarnings: true,
-  //     navigateFallback: '/',
-  //     navigateFallbackAllowlist: [/^\/$/],
-  //     type: 'module',
-  //   },
-  // },
+  pwa: {
+    strategies: sw ? 'injectManifest' : 'generateSW',
+    srcDir: sw ? 'service-worker' : undefined,
+    filename: sw ? 'sw.ts' : undefined,
+    registerType: 'autoUpdate',
+    manifest: {
+      name: "Evan Hassan's Portfolio",
+      short_name: "Evan H.'s Portfolio",
+      display: 'standalone',
+      theme_color: '#2c4e6d',
+      background_color: '#ffffff',
+      icons: [
+        {
+          src: './favicon.ico',
+          sizes: '16x16',
+          type: 'image/x-icon',
+        },
+        {
+          src: './icons/apple-touch-icon-ipad-76x76.png',
+          type: 'image/png',
+          sizes: '57x57',
+        },
+        {
+          src: './icons/android-icon-192x192.png',
+          sizes: '192x192',
+          type: 'image/png',
+        },
+        // {
+        //   src: 'pwa-512x512.png',
+        //   sizes: '512x512',
+        //   type: 'image/png',
+        // },
+        // {
+        //   src: 'pwa-512x512.png',
+        //   sizes: '512x512',
+        //   type: 'image/png',
+        //   purpose: 'any maskable',
+        // },
+      ],
+    },
+    workbox: {
+      globPatterns: ['**/*.{js,css,html,jpg,png,svg,ico}'],
+      maximumFileSizeToCacheInBytes: 1024, // 2GB
+    },
+    injectManifest: {
+      globPatterns: ['**/*.{js,css,html,jpg,png,svg,ico}'],
+    },
+    client: {
+      installPrompt: true,
+      // you don't need to include this: only for testing purposes
+      // if enabling periodic sync for update use 1 hour or so (periodicSyncForUpdates: 3600)
+      periodicSyncForUpdates: 3600,
+    },
+    experimental: {
+      // @ts-ignore
+      includeAllowlist: true,
+    },
+    devOptions: {
+      // enabled: true,
+      suppressWarnings: true,
+      navigateFallback: '/',
+      navigateFallbackAllowlist: [/^\/$/],
+      type: 'module',
+    },
+  },
   router: {
     options: {
       scrollBehaviorType: 'smooth',
