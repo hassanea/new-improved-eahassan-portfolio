@@ -1,6 +1,5 @@
 <template>
   <div class="bg-alternative text-dark dark:bg-[#A9CBE5]">
-    <NuxtPwaManifest />
     <base-skip-link v-focus to="#content" label="Skip to main content" />
     <NuxtLoadingIndicator />
     <NuxtRouteAnnouncer />
