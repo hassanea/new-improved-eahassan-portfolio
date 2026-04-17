@@ -54,7 +54,11 @@ export default defineNuxtConfig({
     database: true,
   },
   css: ['./app/assets/css/main.css'],
-  sentry: {},
+  sentry: {
+    authToken: process.env.SENTRY_AUTH_TOKEN,
+    org: 'ev-corp',
+    project: 'eahassan-portfolio',
+  },
   pinia: {
     storesDirs: ['./stores/**'],
   },
@@ -192,7 +196,7 @@ export default defineNuxtConfig({
     defaultLocale: 'en-US',
   },
   sitemap: {
-    sources: ['https://eahassan.me/sitemap.xml'],
+    sources: ['https://eahassan.me/sitemap.xml', '/api/__sitemap__/urls'],
     // '/api/__sitemap__/urls'
   },
   // security: {
@@ -219,7 +223,7 @@ export default defineNuxtConfig({
     alias: {
       'pg-native': resolve('./stubs/pg-native.mjs'),
     },
-    preset: 'netlify',
+    preset: 'aws-amplify',
     esbuild: {
       options: {
         target: 'esnext',
@@ -272,7 +276,6 @@ export default defineNuxtConfig({
       link: [
         { rel: 'dns-prefetch', href: 'https://images.eahassan.com/' },
         { rel: 'dns-prefetch', href: 'https://api.eahassan.me/' },
-        { rel: 'preload', href: '/app/assets/css/main.css', as: 'style' },
         { rel: 'manifest', href: '/manifest.json' },
         { rel: 'shortcut icon', href: '/favicon.ico' },
         {
