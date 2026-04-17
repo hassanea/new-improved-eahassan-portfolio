@@ -1,6 +1,7 @@
 import tailwindcss from '@tailwindcss/vite';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
+import process from 'node:process';
 import { resolve } from 'node:path';
 
 export default defineNuxtConfig({
@@ -223,7 +224,7 @@ export default defineNuxtConfig({
     alias: {
       'pg-native': resolve('./stubs/pg-native.mjs'),
     },
-    preset: 'aws-amplify',
+    preset: 'vercel',
     esbuild: {
       options: {
         target: 'esnext',
