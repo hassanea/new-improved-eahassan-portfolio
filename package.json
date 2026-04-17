@@ -44,6 +44,7 @@
     "nuxt-security": "2.5.1",
     "nuxt-studio": "1.6.0",
     "pg": "^8.20.0",
+    "pinia": "^3.0.4",
     "tailwindcss": "^4.2.2",
     "validate-color": "^2.2.4",
     "vue": "^3.5.32",
