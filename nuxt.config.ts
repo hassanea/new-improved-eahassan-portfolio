@@ -62,11 +62,7 @@ export default defineNuxtConfig({
     database: true,
   },
   css: ['./app/assets/css/main.css'],
-  sentry: {
-    authToken: process.env.SENTRY_AUTH_TOKEN,
-    org: 'ev-corp',
-    project: 'eahassan-portfolio',
-  },
+  sentry: {},
   pinia: {
     storesDirs: ['./stores/**'],
   },
