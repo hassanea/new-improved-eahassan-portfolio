@@ -225,7 +225,7 @@ export default defineNuxtConfig({
     alias: {
       'pg-native': resolve('./stubs/pg-native.mjs'),
     },
-    preset: 'vercel-edge',
+    preset: 'vercel',
     esbuild: {
       options: {
         target: 'esnext',
