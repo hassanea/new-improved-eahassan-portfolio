@@ -33,6 +33,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/content',
     'nuxt-studio',
+    '@vercel/speed-insights',
   ],
   vite: {
     logLevel: 'info',
@@ -224,7 +225,7 @@ export default defineNuxtConfig({
     alias: {
       'pg-native': resolve('./stubs/pg-native.mjs'),
     },
-    preset: 'vercel',
+    preset: 'vercel-edge',
     esbuild: {
       options: {
         target: 'esnext',

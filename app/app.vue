@@ -139,7 +139,7 @@
   const isNoPreference = useState('reduce-switch');
   const isTransparent = useState('tranparent-switch');
 
-  const toast = useToast();
+  // const toast = useToast();
   const displayCookieBanner = ref(false);
   const showA11y = ref(false);
   const currentRoute = useRoute();
