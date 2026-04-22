@@ -275,7 +275,6 @@
 
   const store = usePortfolioStore();
 
-  await callOnce('projects', () => store.handleFetchProjectData());
   const { favoriteProjects } = storeToRefs(store);
 
   import {
@@ -297,7 +296,12 @@
   const { developer, education, workExperience, skills, services, goals } =
     resumeData;
 
-  definePageMeta({ name: 'Home', layout: 'default', depth: 1 });
+  definePageMeta({
+    name: 'Home',
+    layout: 'default',
+    depth: 1,
+    keepalive: true,
+  });
 
   const turnstile = ref(null);
 

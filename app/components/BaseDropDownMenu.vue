@@ -23,7 +23,7 @@
         class="dropdown-text sr-only"
         >{{ label }}</span
       >
-      <font-awesome :icon="arrowIcon" />
+      <font-awesome :icon="arrowIcon" :class="arrowIconClass" />
     </button>
     <a
       v-else-if="node === 'a'"
@@ -38,7 +38,7 @@
       :aria-controls="toggle ? dropDownMenuId : ''"
     >
       <slot name="icon"> </slot> <span class="sr-only">{{ label }}</span>
-      <font-awesome :icon="arrowIcon" />
+      <font-awesome :icon="arrowIcon" :class="arrowIconClass" />
     </a>
     <nuxt-link
       v-else
@@ -53,7 +53,7 @@
       :aria-controls="toggle ? dropDownMenuId : ''"
     >
       <slot name="icon"> </slot> <span class="sr-only">{{ label }}</span>
-      <font-awesome :icon="arrowIcon" />
+      <font-awesome :icon="arrowIcon" :class="arrowIconClass" />
     </nuxt-link>
     <div
       v-if="toggle && links.length === 0"
@@ -140,6 +140,11 @@
       type: Boolean,
       required: false,
       default: false,
+    },
+    arrowIconClass: {
+      type: String,
+      required: false,
+      default: '',
     },
     links: {
       type: Array,

@@ -9,11 +9,13 @@
             <font-awesome
               v-if="error?.status === 500"
               class="inline-block rounded align-middle text-3xl text-dark md:text-4xl"
+              :class="error500Class"
               icon="fa-solid fa-bomb"
             />
             <font-awesome
               v-else
               class="inline-block rounded align-middle text-3xl text-dark md:text-4xl"
+              :class="error404Class"
               icon="fa-solid fa-do-not-enter"
             />
             <h1
@@ -51,6 +53,12 @@
     error: Object as () => NuxtError,
   });
 
+  onMounted(() => {
+    useHead({
+      title: `${props.error?.status} Error`,
+    });
+  });
+
   useScriptMatomoAnalytics({
     matomoUrl: 'https://www.eahassan.com/matomo/',
     siteId: '1',
@@ -62,17 +70,17 @@
     clearError({ redirect: '/' });
   };
 
-  onMounted(() => {
-    useHead({
-      title: `${props.error?.status} Error`,
-    });
+  const error500Class = computed(() => {
+    return {
+      'text-[#f9d3d9] dark:text-[#f4a7b3]': props.error?.status === 500,
+    };
+  });
+
+  const error404Class = computed(() => {
+    return {
+      'text-rose-700': props.error?.status === 404,
+    };
   });
 </script>
 
-<style lang="css" scoped>
-  /* .error-icon {
-    @apply inline-block rounded align-middle text-3xl text-dark md:text-4xl;
-    bg-[#f9d3d9] dark:bg-[#f4a7b3] 
-     :class="{ 'bg-yellow-100': error?.statusCode === 400, 'bg-[#f9d3d9] dark:bg-[#f4a7b3]': error?.statusCode === 500 }" 
-  } */
-</style>
+<style lang="css" scoped></style>

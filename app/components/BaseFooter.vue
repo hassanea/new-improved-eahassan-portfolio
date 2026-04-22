@@ -46,7 +46,7 @@
   </footer>
 </template>
 
-<script setup>
+<script lang="ts" setup>
   import { useMediaQuery } from '@vueuse/core';
 
   defineOptions({
@@ -62,6 +62,13 @@
       type: Array,
       required: false,
     },
+    year: {
+      type: Number,
+      required: true,
+      validator(value: number) {
+        return Number.isInteger(value);
+      },
+    },
   });
 
   const isMobile = useMediaQuery('(min-width: 320px) and (max-width: 480px)');
@@ -71,12 +78,13 @@
   });
 
   const shownLinks = computed(() => {
-    if (props.socialLinks.length === 0) return;
-    return props.socialLinks.slice(0, props.socialLinks.length - 1);
+    if (props?.socialLinks.length === 0) return;
+    return props?.socialLinks.slice(0, props?.socialLinks.length - 1);
   });
 
   const copyRight = computed(() => {
-    return `© Copyright ${new Date().getFullYear()}`;
+    if (!props.year || props.year <= 0) return '';
+    else return `© Copyright ${props.year}`;
   });
 </script>
 

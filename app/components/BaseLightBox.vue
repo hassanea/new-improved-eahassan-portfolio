@@ -11,10 +11,10 @@
       role="dialog"
       :aria-modal="show ? true : null"
       :aria-label="label"
-      class="fixed top-0 left-0 z-[2000] h-full w-full overflow-y-scroll rounded-xl bg-primary p-6 md:top-[1%] md:left-[10%] md:h-auto md:max-w-[80%] md:min-w-[50%] md:p-7 lg:top-0 lg:left-[25%] lg:max-h-[98%] lg:max-w-[50%] lg:min-w-[35%] lg:p-8 xl:top-[3%] xl:max-h-[auto]"
+      class="fixed top-0 left-0 z-2000 h-full w-full overflow-y-scroll rounded-xl bg-primary p-6 md:top-[1%] md:left-[10%] md:h-auto md:max-w-[80%] md:min-w-[50%] md:p-7 lg:top-0 lg:left-[25%] lg:max-h-[98%] lg:max-w-[50%] lg:min-w-[35%] lg:p-8 xl:top-[3%] xl:max-h-[auto]"
     >
       <div
-        class="absolute top-0 right-0 bottom-0 left-0 mx-auto my-0 flex h-[3.5rem] w-full items-center justify-center rounded-[5px] bg-[#082e66] p-1 align-middle opacity-50 md:justify-evenly md:p-2"
+        class="absolute top-0 right-0 bottom-0 left-0 mx-auto my-0 flex h-14 w-full items-center justify-center rounded-[5px] bg-[#082e66] p-1 align-middle opacity-50 md:justify-evenly md:p-2"
       >
         <p
           class="m-3 inline-block align-middle font-sans2 text-lg leading-normal font-bold text-light italic md:text-xl"
@@ -90,7 +90,7 @@
               provider="imagekit"
               :alt="currentAltDescription"
               :style="wheelTransformStyle"
-              class="mx-auto mt-12 mb-2 block h-auto w-full rounded-xl object-cover md:mt-[3.125rem] md:mb-3"
+              class="mx-auto mt-12 mb-2 block h-auto w-full rounded-xl object-cover md:mt-12.5 md:mb-3"
               @wheel.passive="handleZoomOnProjectImage"
             />
           </Transition>
@@ -102,7 +102,7 @@
         <div
           v-else
           role="status"
-          class="mx-auto mt-[3.125rem] mb-3 block h-auto w-full animate-pulse space-y-8 rounded-xl object-cover md:flex md:items-center md:space-y-0 md:space-x-8 rtl:space-x-reverse"
+          class="mx-auto mt-12.5 mb-3 block h-auto w-full animate-pulse space-y-8 rounded-xl object-cover md:flex md:items-center md:space-y-0 md:space-x-8 rtl:space-x-reverse"
         >
           <div
             class="mx-auto flex h-60 w-full items-center justify-center rounded bg-gray-300 sm:w-96 dark:bg-gray-700"
@@ -145,7 +145,7 @@
           </button>
         </div>
         <div
-          class="mx-auto my-0 flex items-center justify-between px-[1.125rem] py-0 md:px-5 lg:px-6"
+          class="mx-auto my-0 flex items-center justify-between px-4.5 py-0 md:px-5 lg:px-6"
         >
           <base-button
             v-tooltip.left="'Previous'"

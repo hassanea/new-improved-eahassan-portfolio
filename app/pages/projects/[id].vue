@@ -25,6 +25,7 @@
     name: 'Project',
     layout: 'project-layout',
     depth: 3,
+    keepalive: true,
   });
 
   const toggledTags = ref(false);

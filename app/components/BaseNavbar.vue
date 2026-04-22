@@ -17,6 +17,7 @@
             height="55"
             class="navbar-brand-logo nav-link-effects dark:contrast-[0.8]"
           />
+          <span class="sr-only">Home</span>
         </nuxt-link>
       </div>
     </client-only>
@@ -43,12 +44,22 @@
         ref="regLinks"
       >
         <nuxt-link
+          v-if="name !== 'Blog'"
           :to="path"
           :tabindex="!toggle && !showMobileMenu ? null : -1"
           class="nav-link nav-link-effects"
         >
           {{ name }}
         </nuxt-link>
+        <dev-only v-else>
+          <nuxt-link
+            :to="path"
+            :tabindex="!toggle && !showMobileMenu ? null : -1"
+            class="nav-link nav-link-effects"
+          >
+            {{ name }}
+          </nuxt-link>
+        </dev-only>
       </li>
       <li
         v-for="{ name, to, target } in hashLinks"
@@ -66,14 +77,16 @@
           {{ name }}
         </nuxt-link>
       </li>
-      <li v-if="!isTablet">
+      <li v-if="!isTablet" ref="dropdown">
         <base-drop-down-menu
           :toggle="changed"
           @handle-toggle="handleDropDownChange"
           @handle-close="handleDropDownClose"
           label="Website Settings"
           v-tooltip="'Settings'"
+          arrow-icon-class="text-light"
           class="nav-link-effects"
+          :tabindex="!toggle && !showMobileMenu ? null : -1"
         >
           <template #icon>
             <span class="dropdown-text sr-only md:not-sr-only"> Settings </span>
@@ -87,7 +100,7 @@
               <div
                 role="group"
                 aria-label="User Website Preferences"
-                class="grid h-auto w-full grid-cols-1 gap-[0.625rem]"
+                class="grid h-auto w-full grid-cols-1 gap-2.5"
               >
                 <p
                   class="my-1 text-center font-sans2 text-sm leading-normal font-bold text-balance text-dark capitalize italic ordinal md:text-base"
@@ -131,13 +144,20 @@
   import { useFocusTrap } from '@/composables/useFocusTrap';
   import { useColorMode } from '@/composables/useColorMode';
   import { useLocaleDate } from '@/composables/useLocale';
-  // useNthNumber, useGetDate
   import { removeLocalStorageData } from '@/utils';
   import BaseDropDownMenu from './BaseDropDownMenu.vue';
 
-  // useGetDate, useNthNumber
+  import { usePortfolioStore } from '../../stores/usePortfolioStore';
+
+  const store = usePortfolioStore();
+
+  const { currentDate } = storeToRefs(store);
 
   const props = defineProps({
+    toggle: {
+      type: Boolean,
+      required: false,
+    },
     links: {
       type: Array,
       required: false,
@@ -158,19 +178,22 @@
     },
   });
 
-  const { hashLinks, logo, label } = props;
+  const emit = defineEmits(['handle-toggle', 'handle-close']);
+
+  // toggle,
+  const { links, hashLinks, logo, label } = props;
 
   const { endPointDir } = useRuntimeConfig().public;
 
+  // @ts-ignore
   const { setColorSwitchIcon, setColorSwitchLabel, handleColorThemeChange } =
     useColorMode();
 
   const colorScheme = useState('color-mode');
   const isDark = useState('is-dark-mode');
 
-  const currentDate = new Date();
+  // @ts-ignore
   const currentFormatDate = useLocaleDate(currentDate);
-  // const numDate = useGetDate(currentDate);
 
   defineOptions({
     name: 'BaseNavbar',
@@ -188,16 +211,11 @@
 
   const isTablet = useMediaQuery('(min-width: 768px) and (max-width: 992px)');
 
-  const toggle = ref(false);
-
   const regLinks = ref(null);
 
   const hashes = ref(null);
 
-  // onMounted(() => {
-  //   regLinks?.value.forEach(el => console.log(el.innerText));
-  //   hashes?.value.forEach(el => console.log(el.innerText));
-  // });
+  const dropdown = ref(null);
 
   const handleDropDownChange = () => {
     changed.value = !changed.value;
@@ -208,11 +226,11 @@
   };
 
   const toggleMobileNavigation = () => {
-    toggle.value = !toggle.value;
+    emit('handle-toggle');
   };
 
   const closeMobileNavigation = () => {
-    toggle.value = false;
+    emit('handle-close');
   };
 
   const handleScrollToSection = e => {
@@ -224,11 +242,11 @@
   };
 
   const toggleMenuClass = computed(() => {
-    return { active: toggle.value };
+    return { active: props.toggle };
   });
 
   const mobileNavbarClass = computed(() => {
-    return { mobile: toggle.value };
+    return { mobile: props.toggle };
   });
 
   const setLogo = computed(() => {
@@ -236,32 +254,31 @@
   });
 
   const setMobileIcon = computed(() => {
-    return toggle.value ? 'fa-solid fa-xmark' : 'fa-solid fa-bars-staggered';
+    return props.toggle ? 'fa-solid fa-xmark' : 'fa-solid fa-bars-staggered';
   });
 
   const setExpanded = computed(() => {
-    return toggle.value ? true : false;
+    return props.toggle ? true : false;
   });
 
-  watch(toggle, value => {
-    if (value) {
-      initFocusTrap();
-      regLinks?.value.forEach(regLink => {
-        regLink.setAttribute('tabindex', 0);
-      });
-      hashes?.value.forEach(hash => {
-        hash.setAttribute('tabindex', 0);
-      });
-    } else {
-      clearFocusTrap();
-      regLinks?.value.forEach(regLink => {
-        regLink.setAttribute('tabindex', -1);
-      });
-      hashes?.value.forEach(hash => {
-        hash.setAttribute('tabindex', -1);
-      });
-    }
-  });
+  watch(
+    () => props.toggle,
+    value => {
+      const elements = [...regLinks?.value, ...hashes?.value, dropdown?.value];
+
+      if (value) {
+        initFocusTrap();
+        elements.forEach(el => {
+          el.setAttribute('tabindex', 0);
+        });
+      } else {
+        clearFocusTrap();
+        elements.forEach(el => {
+          el.setAttribute('tabindex', -1);
+        });
+      }
+    },
+  );
 </script>
 
 <style lang="css" scoped>

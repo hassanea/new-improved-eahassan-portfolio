@@ -16,7 +16,7 @@
         class="nav-link-effects"
       >
         <template #icon>
-          <span class="ml-0 inline-block align-middle lg:ml-2">
+          <span class="mr-0 inline-block align-middle lg:mr-2">
             <font-awesome icon="fa-solid fa-gear" />
           </span>
         </template>
@@ -26,7 +26,7 @@
             <div
               role="group"
               aria-label="User Website Preferences"
-              class="grid h-auto w-full grid-cols-1 gap-[0.625rem]"
+              class="grid h-auto w-full grid-cols-1 gap-2.5"
             >
               <!-- <p
                 class="my-1 text-center font-sans2 text-sm leading-normal font-bold text-balance text-dark capitalize italic md:text-base"
@@ -63,7 +63,7 @@
       </base-drop-down-menu>
     </div>
   </base-main>
-  <base-footer :social-links />
+  <base-footer :social-links :year="currentYear" />
 </template>
 
 <script setup lang="ts">
@@ -74,6 +74,12 @@
   import BaseBreadCrumbs from '@/components/BaseBreadCrumbs.vue';
   import BaseDropDownMenu from '@/components/BaseDropDownMenu.vue';
   import socials from '@/assets/data/socials.json';
+
+  import { usePortfolioStore } from '../../stores/usePortfolioStore';
+
+  const store = usePortfolioStore();
+
+  const { currentYear } = storeToRefs(store);
 
   const { socialLinks } = socials;
 

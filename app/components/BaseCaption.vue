@@ -7,7 +7,7 @@
       class="mx-auto my-0 grid h-auto w-full min-w-80 grid-cols-1 place-content-center place-items-center p-6 text-center font-sans2 md:max-w-[80%] md:p-7 lg:max-w-[90%] lg:p-8 xl:max-w-[90%] 2xl:max-w-[80%]"
     >
       <h3
-        class="lightbox-title mx-0 my-4 line-clamp-3 font-sans text-xl leading-normal font-bold text-pretty text-dark uppercase italic md:my-5 md:text-2xl lg:my-6 lg:text-[1.625rem] xl:text-[1.75rem]"
+        class="lightbox-title mx-0 my-4 line-clamp-3 font-sans text-xl leading-normal font-bold text-pretty text-dark uppercase italic md:my-5 md:text-2xl lg:my-6 lg:text-[1.625rem] xl:text-2-5xl"
       >
         {{ project.title }}
       </h3>

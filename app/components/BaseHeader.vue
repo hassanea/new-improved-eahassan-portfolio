@@ -9,11 +9,14 @@
     @pointerleave="showPlayPauseButton = false"
   >
     <base-navbar
+      :toggle
       :class="navbarScrollClass"
       :logo="baseLogo"
       :hash-links="navItems"
       :links="routes"
       label="Main navigation"
+      @handle-toggle="toggle = !toggle"
+      @handle-close="toggle = false"
     />
     <video
       v-if="!isMobile"
@@ -56,7 +59,7 @@
             :label="videoLabel"
             @click="handleVideoPlayPause"
             @keydown.enter="handleVideoPlayPause"
-            class="absolute bottom-0 left-0 z-[2] rounded-full md:bottom-[6rem] md:left-4 lg:bottom-[-1rem] xl:bottom-[-11.5rem] xl:left-[2%]"
+            class="absolute bottom-0 left-0 z-2 rounded-full md:bottom-24 md:left-4 lg:-bottom-4 xl:-bottom-46 xl:left-[2%]"
           >
             <template #icon>
               <font-awesome :icon="videoPlayPauseIcon" />
@@ -129,6 +132,8 @@
       },
     },
   });
+
+  const toggle = ref(false);
 
   const {
     headerEl,

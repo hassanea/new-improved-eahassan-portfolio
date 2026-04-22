@@ -4,7 +4,6 @@
     :style="{ backgroundImage: `url(${resumeBackgroundImage})` }"
     :class="{ 'bg-img': resumeBackgroundImage }"
   >
-    <!-- <article></article> -->
     <base-tabs
       :tabs="tabs"
       :active-tab="selectedTab"
@@ -24,6 +23,7 @@
                     width="16"
                     height="16"
                     class="ou-icon"
+                    v-tooltip.left="'Oakland University'"
                   />
                 </span>
                 {{ education.school }}
@@ -39,7 +39,7 @@
               </p>
               <p class="info">
                 <span class="mx">
-                  <font-awesome icon="fa-solid fa-award" />
+                  <font-awesome icon="fa-solid fa-award" class="text-[#005]" />
                 </span>
                 {{ education.honors }}
               </p>

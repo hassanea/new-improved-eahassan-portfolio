@@ -1,7 +1,7 @@
 <template>
   <base-header :heading="mainHeading" :description="description" />
   <base-main> <slot /> </base-main>
-  <base-footer :social-links />
+  <base-footer :social-links :year="currentYear" />
 </template>
 
 <script setup lang="ts">
@@ -10,6 +10,12 @@
   import BaseFooter from '@/components/BaseFooter.vue';
   import resume from '@/assets/data/resume.json';
   import socials from '@/assets/data/socials.json';
+
+  import { usePortfolioStore } from '../../stores/usePortfolioStore';
+
+  const store = usePortfolioStore();
+
+  const { currentYear } = storeToRefs(store);
 
   const {
     developer: { name, description },

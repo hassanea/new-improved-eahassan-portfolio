@@ -47,7 +47,7 @@
     modelValue: {
       type: Boolean,
       required: false,
-      default: false,
+      default: true,
     },
   });
 
@@ -84,8 +84,6 @@
     else if (props.mode === 'reduce') return 'Toggle No-Preference Mode!';
     else return '';
   });
-
-  // v-tooltip="`${toolTipLabel}`"
 
   const SwitchClasses = computed(() => {
     return {

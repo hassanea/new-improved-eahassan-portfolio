@@ -5,6 +5,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
   const supabase = useSupabaseClient();
   const projects = ref([]);
   const projectID = ref(0);
+  const currentDate = ref(null);
 
   async function handleFetchProjectData() {
     const { data } = await useAsyncData('projects', async () => {
@@ -27,12 +28,21 @@ export const usePortfolioStore = defineStore('portfolio', () => {
     else return projects.value.find(project => project.id === projectID.value);
   });
 
+  const currentYear = computed(() => {
+    // @ts-ignore
+    const date = new Date(currentDate.value);
+    if (!date) return 0;
+    return date.getFullYear();
+  });
+
   return {
     projects,
     currentProject,
     projectID,
+    currentDate,
     handleFetchProjectData,
     favoriteProjects,
+    currentYear,
   };
 });
 

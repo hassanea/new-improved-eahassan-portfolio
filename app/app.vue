@@ -9,112 +9,118 @@
       </NuxtLayout>
     </UApp>
 
-    <div
-      class="absolute bottom-[1%] left-[10%] z-300 rounded-xl bg-light text-center"
-    >
-      <base-drop-down-menu
-        v-tooltip="'A11y Settings'"
-        :toggle="showA11y"
-        label="Accessibility Settings"
-        variant="up"
-        @handle-toggle="showA11y = !showA11y"
-        @handle-close="showA11y = false"
+    <dev-only>
+      <div
+        class="absolute bottom-[1%] left-[10%] z-300 rounded-xl bg-light text-center"
       >
-        <template #icon>
-          <lazy-nuxt-img
-            :src="`${endPointDir}/${endPointSubDir}/a11y.svg`"
-            alt=""
-            provider="imagekit"
-            width="48"
-            height="48"
-            loading="lazy"
-            class="a11y-icon inline-block h-8 w-8 text-center align-middle"
-          />
-        </template>
-        <template #default>
-          <client-only>
-            <div
-              role="group"
-              aria-label="User Website Accessibility Preferences"
-              class="grid h-auto w-full grid-cols-1 gap-2"
-            >
-              <lazy-base-select
-                v-model="contrastMode"
-                :choices="contrastOptions"
-                label="Prefers Contrast Theme"
-                description="Set preferred contrast scheme on website."
-                @update:model-value="contrastMode = $event"
-              />
-              <lazy-base-switch
-                :label="setReducedMotionSwitchLabel"
-                :model-value="isNoPreference"
-                :mode="reduceMotion"
-                description="Enable or disable animations and transitions on website."
-                @update:model-value="handleMotionChange"
+        <base-drop-down-menu
+          v-tooltip="'A11y Settings'"
+          :toggle="showA11y"
+          label="Accessibility Settings"
+          variant="up"
+          @handle-toggle="showA11y = !showA11y"
+          @handle-close="showA11y = false"
+        >
+          <template #icon>
+            <lazy-nuxt-img
+              :src="`${endPointDir}/${endPointSubDir}/a11y.svg`"
+              alt=""
+              provider="imagekit"
+              width="48"
+              height="48"
+              loading="lazy"
+              class="a11y-icon inline-block h-8 w-8 text-center align-middle"
+            />
+          </template>
+          <template #default>
+            <client-only>
+              <div
+                role="group"
+                aria-label="User Website Accessibility Preferences"
+                class="grid h-auto w-full grid-cols-1 gap-2"
               >
-                <template #icon>
-                  <font-awesome :icon="setReducedMotionSwitchIcon" />
-                </template>
-              </lazy-base-switch>
-              <lazy-base-switch
-                :label="setTransparentSwitchLabel"
-                :model-value="isTransparent"
-                :mode="transparentMode"
-                description="Enable or disable tranparency of content on website."
-                @update:model-value="handleTransparentChange"
-              >
-                <template #icon>
-                  <font-awesome :icon="setTransparentSwitchIcon" />
-                </template>
-              </lazy-base-switch>
-            </div>
-          </client-only>
-        </template>
-      </base-drop-down-menu>
-    </div>
+                <lazy-base-select
+                  v-model="contrastMode"
+                  :choices="contrastOptions"
+                  label="Prefers Contrast Theme"
+                  description="Set preferred contrast scheme on website."
+                  @update:model-value="contrastMode = $event"
+                />
+                <lazy-base-switch
+                  :label="setReducedMotionSwitchLabel"
+                  :model-value="isNoPreference"
+                  :mode="reduceMotion"
+                  description="Enable or disable animations and transitions on website."
+                  @update:model-value="handleMotionChange"
+                >
+                  <template #icon>
+                    <font-awesome :icon="setReducedMotionSwitchIcon" />
+                  </template>
+                </lazy-base-switch>
+                <lazy-base-switch
+                  :label="setTransparentSwitchLabel"
+                  :model-value="isTransparent"
+                  :mode="transparentMode"
+                  description="Enable or disable tranparency of content on website."
+                  @update:model-value="handleTransparentChange"
+                >
+                  <template #icon>
+                    <font-awesome :icon="setTransparentSwitchIcon" />
+                  </template>
+                </lazy-base-switch>
+              </div>
+            </client-only>
+          </template>
+        </base-drop-down-menu>
+      </div>
+    </dev-only>
   </div>
 
-  <Teleport v-if="displayCookieBanner" to="#teleports">
-    <transition name="fade">
-      <lazy-base-modal
-        varaint="custom"
-        :modelValue="displayCookieBanner"
-        title="Cookie Policy"
-        description="Managing the website's usage of cookies"
-        @update:modelValue="toggleCookieBannerModal"
-        @close-modal="closeCookieBannerModal"
-        class="cookie-modal"
-      >
-        <template #default>
-          <span
-            class="mx-auto inline-flex h-[1.875rem] w-[1.875rem] items-center justify-center align-middle text-3xl"
-            ><lazy-font-awesome icon="fa-solid fa-cookie" class="text-red-950"
-          /></span>
-          <div
-            class="flex flex-1 flex-row flex-wrap items-center justify-center gap-3"
-          >
-            <lazy-base-button label="Accept cookies" class="flex-1/2">
-              <template #icon>
-                <lazy-font-awesome icon="fa-solid fa-check" />
-              </template>
-              <template #default> Accept Cookies </template>
-            </lazy-base-button>
-            <lazy-base-button
-              @click="closeCookieBannerModal"
-              @keydown.enter="closeCookieBannerModal"
-              label="Decline cookies"
-              class="decline flex-1/2 text-dark"
+  <dev-only>
+    <Teleport v-if="displayCookieBanner" to="#teleports">
+      <transition name="fade">
+        <lazy-base-modal
+          varaint="custom"
+          :modelValue="displayCookieBanner"
+          title="Cookie Policy"
+          description="Managing the website's usage of cookies"
+          @update:modelValue="toggleCookieBannerModal"
+          @close-modal="closeCookieBannerModal"
+          class="cookie-modal"
+        >
+          <template #default>
+            <span
+              class="mx-auto inline-flex h-7.5 w-7.5 items-center justify-center align-middle text-3xl"
+              ><lazy-font-awesome
+                icon="fa-solid fa-cookie"
+                class="text-red-950"
+            /></span>
+            <div
+              class="flex flex-1 flex-row flex-wrap items-center justify-center gap-3"
             >
-              <template #icon>
-                <lazy-font-awesome icon="fa-solid fa-xmark" />
-              </template>
-              <template #default> Decline Cookies </template>
-            </lazy-base-button>
-          </div>
-        </template>
-      </lazy-base-modal>
-    </transition>
-  </Teleport>
+              <lazy-base-button label="Accept cookies" class="flex-1/2">
+                <template #icon>
+                  <lazy-font-awesome icon="fa-solid fa-check" />
+                </template>
+                <template #default> Accept Cookies </template>
+              </lazy-base-button>
+              <lazy-base-button
+                @click="closeCookieBannerModal"
+                @keydown.enter="closeCookieBannerModal"
+                label="Decline cookies"
+                class="decline flex-1/2 text-dark"
+              >
+                <template #icon>
+                  <lazy-font-awesome icon="fa-solid fa-xmark" />
+                </template>
+                <template #default> Decline Cookies </template>
+              </lazy-base-button>
+            </div>
+          </template>
+        </lazy-base-modal>
+      </transition>
+    </Teleport>
+  </dev-only>
 </template>
 
 <script setup lang="ts">
@@ -124,11 +130,21 @@
   import { useTransparency } from '@/composables/useTransparency';
   import BaseSkipLink from '@/components/BaseSkipLink.vue';
   import BaseDropDownMenu from '@/components/BaseDropDownMenu.vue';
-  // import { usePortfolioStore } from '../stores/usePortfolioStore';
+  import { usePortfolioStore } from '~~/stores/usePortfolioStore';
 
-  // const store = usePortfolioStore();
+  const store = usePortfolioStore();
 
-  // callOnce('projects', () => store.handleFetchProjectData());
+  const { currentDate } = storeToRefs(store);
+
+  // @ts-ignore
+  const { localeCookie, currentLocale, currentWritingDirection } = useLocale();
+
+  await callOnce('init-state', () => {
+    store.handleFetchProjectData();
+    localeCookie.value = currentLocale.value;
+    // @ts-ignore
+    currentDate.value = new Date();
+  });
 
   const { endPointDir, endPointSubDir } = useRuntimeConfig().public;
 
@@ -158,9 +174,6 @@
     handleTransparentChange,
   } = useTransparency();
 
-  // @ts-ignore
-  const { localeCookie, currentLocale, currentWritingDirection } = useLocale();
-
   useScriptMatomoAnalytics({
     matomoUrl: 'https://www.eahassan.com/matomo/',
     siteId: '1',
@@ -170,9 +183,6 @@
 
   onMounted(() => {
     console.log('Mounted');
-    callOnce('globalState', () => {
-      localeCookie.value = currentLocale.value;
-    });
     useHead({
       titleTemplate(title) {
         return title

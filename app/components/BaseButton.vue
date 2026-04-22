@@ -56,7 +56,6 @@
 
 <style lang="css">
   @import '../../app/assets/css/main.css';
-  /* @import 'tailwindcss'; */
   .btn {
     height: auto;
     font:

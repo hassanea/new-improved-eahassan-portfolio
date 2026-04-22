@@ -10,11 +10,9 @@
     name: 'Blog',
     depth: 2,
   });
-  const { data: blogListing } = await useAsyncData('blog', () =>
-    queryCollection('content').path('/blog').all(),
-  );
-
-  console.log(blogListing);
+  // const { data: blogListing } = await useAsyncData('blog', () =>
+  //   queryCollection('content').path('/blog').all(),
+  // );
 </script>
 
 <style lang="css" scoped></style>

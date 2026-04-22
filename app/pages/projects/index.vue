@@ -46,6 +46,7 @@
     name: 'Projects',
     layout: 'project-layout',
     depth: 2,
+    keepalive: true,
   });
 
   const { endPointDir } = useRuntimeConfig().public;
