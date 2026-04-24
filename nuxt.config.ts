@@ -37,18 +37,34 @@ export default defineNuxtConfig({
   ],
   hooks: {
     'build:manifest': manifest => {
-      for (const key of Object.keys(manifest)) {
-        const entry = manifest[key];
-        if (entry.resourceType === 'style' || key.endsWith('.css')) {
-          entry.dynamicImports = [];
+      // find the app entry, css list
+      const css = Object.values(manifest).find(options => options.isEntry)?.css;
+      if (css) {
+        // start from the end of the array and go to the beginning
+        for (let i = css.length - 1; i >= 0; i--) {
+          // if it starts with 'entry', remove it from the list
+          if (css[i].startsWith('entry')) {
+            css.splice(i, 1);
+          }
         }
-        // Clear css references from ALL entries (including JS chunks)
-        // to prevent Nuxt from injecting render-blocking <link> tags.
-        // Styles are already inlined via SSR.
-        entry.css = [];
       }
     },
   },
+
+  // hooks: {
+  //   'build:manifest': manifest => {
+  //     for (const key of Object.keys(manifest)) {
+  //       const entry = manifest[key];
+  //       if (entry.resourceType === 'style' || key.endsWith('.css')) {
+  //         entry.dynamicImports = [];
+  //       }
+  //       // Clear css references from ALL entries (including JS chunks)
+  //       // to prevent Nuxt from injecting render-blocking <link> tags.
+  //       // Styles are already inlined via SSR.
+  //       entry.css = [];
+  //     }
+  //   },
+  // },
   vite: {
     logLevel: 'info',
     plugins: [tailwindcss()],
