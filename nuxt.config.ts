@@ -35,6 +35,20 @@ export default defineNuxtConfig({
     'nuxt-studio',
     '@vercel/speed-insights',
   ],
+  hooks: {
+    'build:manifest': manifest => {
+      for (const key of Object.keys(manifest)) {
+        const entry = manifest[key];
+        if (entry.resourceType === 'style' || key.endsWith('.css')) {
+          entry.dynamicImports = [];
+        }
+        // Clear css references from ALL entries (including JS chunks)
+        // to prevent Nuxt from injecting render-blocking <link> tags.
+        // Styles are already inlined via SSR.
+        entry.css = [];
+      }
+    },
+  },
   vite: {
     logLevel: 'info',
     plugins: [tailwindcss()],
