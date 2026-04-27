@@ -1,9 +1,9 @@
 import { toValue } from 'vue';
 import { defineStore, acceptHMRUpdate, skipHydrate } from 'pinia';
-import { useColorMode } from '../app/composables/useColorMode';
+import { useMyColorMode } from '../app/composables/useMyColorMode;
 
 export const useColorModeStore = defineStore('colorMode', () => {
-  const { colorMode, isDarkMode, isLightMode } = useColorMode();
+  const { colorMode, isDarkMode, isLightMode } = useMyColorMode();
 
   const colorTheme = ref(toValue(colorMode));
   const isDark = ref(toValue(isDarkMode));

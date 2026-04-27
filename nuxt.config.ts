@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 import process from 'node:process';
 import { resolve } from 'node:path';
+const sw = process.env.SW === 'true';
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -18,12 +19,12 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/a11y',
     '@nuxt/fonts',
+    '@nuxtjs/seo',
     '@vesp/nuxt-fontawesome',
     '@nuxt/hints',
     '@nuxt/scripts',
-    '@nuxt/ui',
+    '@nuxt/ui', // "nuxt-security",
     '@pinia/nuxt',
-    // "nuxt-security",
     'nuxt-resend',
     '@nuxtjs/turnstile',
     '@nuxtjs/supabase',
@@ -34,6 +35,12 @@ export default defineNuxtConfig({
     '@nuxt/content',
     'nuxt-studio',
     '@vercel/speed-insights',
+    '@vite-pwa/nuxt',
+    (_, nuxt) => {
+      nuxt.hook('pwa:beforeBuildServiceWorker', options => {
+        console.log('pwa:beforeBuildServiceWorker: ', options.base);
+      });
+    },
   ],
   hooks: {
     'build:manifest': manifest => {
@@ -228,8 +235,8 @@ export default defineNuxtConfig({
     defaultLocale: 'en-US',
   },
   sitemap: {
-    sources: ['https://eahassan.me/sitemap.xml', '/api/__sitemap__/urls'],
-    // '/api/__sitemap__/urls'
+    sources: ['/api/__sitemap__/urls'],
+    // 'https://eahassan.me/sitemap.xml',
   },
   // security: {
   //   headers: {
@@ -241,6 +248,71 @@ export default defineNuxtConfig({
   //     crossOriginResourcePolicy: "cross-origin",
   //   },
   // },
+  pwa: {
+    strategies: sw ? 'injectManifest' : 'generateSW',
+    srcDir: sw ? 'service-worker' : undefined,
+    filename: sw ? 'sw.ts' : undefined,
+    registerType: 'autoUpdate',
+    manifest: {
+      name: "Evan Hassan's Portfolio",
+      short_name: "Evan H.'s Portfolio",
+      display: 'standalone',
+      theme_color: '#2c4e6d',
+      background_color: '#ffffff',
+      icons: [
+        {
+          src: './favicon.ico',
+          sizes: '16x16',
+          type: 'image/x-icon',
+        },
+        {
+          src: './icons/apple-touch-icon-ipad-76x76.png',
+          type: 'image/png',
+          sizes: '57x57',
+        },
+        {
+          src: './icons/android-icon-192x192.png',
+          sizes: '192x192',
+          type: 'image/png',
+        },
+        // {
+        //   src: 'pwa-512x512.png',
+        //   sizes: '512x512',
+        //   type: 'image/png',
+        // },
+        // {
+        //   src: 'pwa-512x512.png',
+        //   sizes: '512x512',
+        //   type: 'image/png',
+        //   purpose: 'any maskable',
+        // },
+      ],
+    },
+    workbox: {
+      globPatterns: ['**/*.{js,css,html,jpg,png,svg,ico}'],
+      maximumFileSizeToCacheInBytes: 6 * 1024 * 1024, // 2GB
+    },
+    injectManifest: {
+      globPatterns: ['**/*.{js,css,html,jpg,png,svg,ico}'],
+    },
+    client: {
+      installPrompt: true,
+      // you don't need to include this: only for testing purposes
+      // if enabling periodic sync for update use 1 hour or so (periodicSyncForUpdates: 3600)
+      periodicSyncForUpdates: 3600,
+    },
+    experimental: {
+      // @ts-ignore
+      includeAllowlist: true,
+    },
+    devOptions: {
+      // enabled: true,
+      suppressWarnings: true,
+      navigateFallback: '/',
+      navigateFallbackAllowlist: [/^\/$/],
+      type: 'module',
+    },
+  },
   sourcemap: {
     client: 'hidden',
   },
@@ -308,7 +380,7 @@ export default defineNuxtConfig({
       link: [
         { rel: 'dns-prefetch', href: 'https://images.eahassan.com/' },
         { rel: 'dns-prefetch', href: 'https://api.eahassan.me/' },
-        { rel: 'manifest', href: '/manifest.json' },
+        // { rel: 'manifest', href: '/manifest.json' },
         { rel: 'shortcut icon', href: '/favicon.ico' },
         {
           rel: 'icon',

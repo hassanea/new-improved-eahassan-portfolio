@@ -25,7 +25,10 @@
                     icon="fa-solid fa-phone"
                     :class="{ 'd-none': isMobile }"
                   />
-                  <span class="divider ml mr" :class="{ 'd-none': isMobile }" />
+                  <span
+                    class="divider mx-0.5 md:mx-1"
+                    :class="{ 'd-none': isMobile }"
+                  />
                   {{ developer.cellPhone }}
                 </a>
                 <a
@@ -38,7 +41,7 @@
                     :class="{ 'd-none': isMobile }"
                   />
                   <span
-                    class="divider ml mr"
+                    class="divider mx-0.5 md:mx-1"
                     :class="{ 'd-none': isMobile }"
                   />{{ developer.email }}
                 </a>
@@ -345,8 +348,8 @@
   // useScriptCloudflareTurnstile({});
 
   // const turnstile = ref(null);
-  const theme = useState('color-mode');
-  const language = useState('locale');
+  // const theme = useState('color-mode');
+  // const language = useState('locale');
   const show = ref(false);
   const currentStep = ref(0);
 
@@ -458,6 +461,7 @@
 </script>
 
 <style lang="css" scoped>
+  @import '../assets/css/main.css';
   .contact-modal-icon {
     font-size: 1.25rem;
   }
@@ -474,17 +478,11 @@
   }
 
   .contact-modal-info .contact-modal-link {
-    display: block;
-    font-weight: bold;
-    /* color: $text-color-2; */
-    background: #6d9bc3;
-    padding: 1rem;
-    border-radius: 10px;
+    @apply block rounded-[10px] bg-tertiary p-4 text-[0.875rem] font-bold text-dark md:text-base;
   }
 
   .contact-modal-info .contact-modal-link:hover {
-    color: #98afc7;
-    /* background: $text-color-2; */
+    @apply bg-dark text-[#98afc7];
   }
 
   .fade-enter-from {

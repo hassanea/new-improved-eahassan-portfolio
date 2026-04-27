@@ -102,11 +102,11 @@
                 aria-label="User Website Preferences"
                 class="grid h-auto w-full grid-cols-1 gap-2.5"
               >
-                <p
+                <!-- <p
                   class="my-1 text-center font-sans2 text-sm leading-normal font-bold text-balance text-dark capitalize italic ordinal md:text-base"
                 >
                   <time :datetime="currentDate"> {{ currentFormatDate }} </time>
-                </p>
+                </p> -->
                 <lazy-base-button
                   variant="btn-no-mg"
                   @click="removeLocalStorageData"
@@ -130,6 +130,46 @@
                     <lazy-font-awesome :icon="setColorSwitchIcon" />
                   </template>
                 </lazy-base-switch>
+
+                <lazy-base-button
+                  variant="btn-no-mg"
+                  @click="$pwa?.install()"
+                  @keydown.enter="$pwa?.install()"
+                  label="Install PWA App"
+                  v-tooltip.left="'Install App'"
+                >
+                  <template #icon>
+                    <lazy-font-awesome icon="fa-solid fa-desktop-arrow-down" />
+                  </template>
+                </lazy-base-button>
+
+                <lazy-base-button
+                  variant="btn-no-mg"
+                  @click="$pwa?.updateServiceWorker()"
+                  @keydown.enter="$pwa?.updateServiceWorker()"
+                  label="Reload for New Data"
+                  v-tooltip.left="'Reload'"
+                >
+                  <template #icon>
+                    <lazy-font-awesome icon="fa-solid fa-arrow-rotate-right" />
+                  </template>
+                </lazy-base-button>
+
+                <ClientOnly>
+                  <span>
+                    PWA
+                    {{ $pwa?.isPWAInstalled ? 'Installed' : 'Not Installed' }}:
+                    <nuxt-img
+                      v-if="$pwa?.isPWAInstalled"
+                      provider="imagekit"
+                      src="/pwa-logo.svg"
+                      alt=""
+                      width="20"
+                      height="20"
+                    />
+                    <font-awesome v-else icon="fa-solid fa-xmark" />
+                  </span>
+                </ClientOnly>
               </div>
             </client-only>
           </template>
@@ -142,8 +182,8 @@
 <script lang="ts" setup>
   import { useMediaQuery } from '@vueuse/core';
   import { useFocusTrap } from '@/composables/useFocusTrap';
-  import { useColorMode } from '@/composables/useColorMode';
-  import { useLocaleDate } from '@/composables/useLocale';
+  import { useMyColorMode } from '~/composables/useMyColorMode';
+  // import { useLocaleDate } from '@/composables/useLocale';
   import { removeLocalStorageData } from '@/utils';
   import BaseDropDownMenu from './BaseDropDownMenu.vue';
 
@@ -187,13 +227,13 @@
 
   // @ts-ignore
   const { setColorSwitchIcon, setColorSwitchLabel, handleColorThemeChange } =
-    useColorMode();
+    useMyColorMode();
 
   const colorScheme = useState('color-mode');
   const isDark = useState('is-dark-mode');
 
   // @ts-ignore
-  const currentFormatDate = useLocaleDate(currentDate);
+  // const currentFormatDate = useLocaleDate(currentDate);
 
   defineOptions({
     name: 'BaseNavbar',

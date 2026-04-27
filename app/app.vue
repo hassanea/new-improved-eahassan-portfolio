@@ -1,6 +1,7 @@
 <template>
   <div class="bg-alternative text-dark dark:bg-[#A9CBE5]">
     <base-skip-link v-focus to="#content" label="Skip to main content" />
+    <NuxtPwaManifest />
     <NuxtLoadingIndicator />
     <NuxtRouteAnnouncer />
     <UApp>
@@ -74,6 +75,45 @@
         </base-drop-down-menu>
       </div>
     </dev-only>
+
+    <div>
+      <ClientOnly>
+        <div
+          v-if="$pwa?.offlineReady || $pwa?.needRefresh"
+          class="pwa-toast"
+          role="alert"
+        >
+          <div class="message">
+            <span v-if="$pwa.offlineReady"> App ready to work offline </span>
+            <span v-else>
+              New content available, click on reload button to update.
+            </span>
+          </div>
+          <button v-if="$pwa.needRefresh" @click="$pwa.updateServiceWorker()">
+            Reload
+          </button>
+          <button @click="$pwa.cancelPrompt()">Close</button>
+        </div>
+        <div
+          v-if="
+            $pwa?.showInstallPrompt && !$pwa?.offlineReady && !$pwa?.needRefresh
+          "
+          class="pwa-toast"
+          role="alert"
+        >
+          <div class="message">
+            <span> Install PWA </span>
+          </div>
+          <button @click="$pwa.install()">Install</button>
+          <button @click="$pwa.cancelInstall()">Cancel</button>
+          <div v-show="$pwa?.needRefresh">
+            <span
+              >New content available, click on reload button to update.</span
+            >
+          </div>
+        </div>
+      </ClientOnly>
+    </div>
   </div>
 
   <dev-only>
@@ -125,7 +165,7 @@
 
 <script setup lang="ts">
   import { useReducedMotion } from '@/composables/useReducedMotion';
-  import { useLocale } from '@/composables/useLocale';
+  // import { useLocale } from '@/composables/useLocale';
   import { useContrast } from '@/composables/useContrast';
   import { useTransparency } from '@/composables/useTransparency';
   import BaseSkipLink from '@/components/BaseSkipLink.vue';
@@ -137,11 +177,13 @@
   const { currentDate } = storeToRefs(store);
 
   // @ts-ignore
-  const { localeCookie, currentLocale, currentWritingDirection } = useLocale();
+  // const { currentLocale, currentWritingDirection } = useLocale();
+
+  // localeCookie,
 
   await callOnce('init-state', () => {
     store.handleFetchProjectData();
-    localeCookie.value = currentLocale.value;
+    // localeCookie.value = currentLocale.value;
     // @ts-ignore
     currentDate.value = new Date();
   });
@@ -155,7 +197,8 @@
   const isNoPreference = useState('reduce-switch');
   const isTransparent = useState('tranparent-switch');
 
-  // const toast = useToast();
+  const { $pwa } = useNuxtApp();
+  const toast = useToast();
   const displayCookieBanner = ref(false);
   const showA11y = ref(false);
   const currentRoute = useRoute();
@@ -183,6 +226,12 @@
 
   onMounted(() => {
     console.log('Mounted');
+    if ($pwa?.offlineReady) {
+      toast.add({
+        title: 'Work Offline?',
+        description: 'App ready to work offline.',
+      });
+    }
     useHead({
       titleTemplate(title) {
         return title
@@ -191,8 +240,8 @@
       },
       // @ts-ignore
       htmlAttrs: {
-        lang: currentLocale,
-        dir: currentWritingDirection,
+        // lang: currentLocale,
+        // dir: currentWritingDirection,
         class: {
           dark: () => colorMode.value === 'dark',
           light: () => colorMode.value === 'light',

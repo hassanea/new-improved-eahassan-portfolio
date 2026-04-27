@@ -67,7 +67,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useColorMode } from '@/composables/useColorMode';
+  import { useMyColorMode } from '~/composables/useMyColorMode';
   import { removeLocalStorageData } from '@/utils';
   import BaseMain from '@/components/BaseMain.vue';
   import BaseFooter from '@/components/BaseFooter.vue';
@@ -97,7 +97,7 @@
 
   // @ts-ignore
   const { setColorSwitchIcon, setColorSwitchLabel, handleColorThemeChange } =
-    useColorMode();
+    useMyColorMode();
 
   const colorOption = useState('color-mode');
   const isDark = useState('is-dark-mode');

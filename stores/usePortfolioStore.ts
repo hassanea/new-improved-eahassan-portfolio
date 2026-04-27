@@ -1,5 +1,4 @@
 // @ts-ignore
-import { defineStore } from 'pinia';
 
 export const usePortfolioStore = defineStore('portfolio', () => {
   const supabase = useSupabaseClient();
@@ -17,15 +16,15 @@ export const usePortfolioStore = defineStore('portfolio', () => {
   }
 
   const favoriteProjects = computed(() => {
-    if (projects.value.length === 0) return [];
+    if (projects?.value.length === 0) return [];
     // @ts-ignore
-    else return projects.value.filter(project => project.isFavorite);
+    else return projects?.value.filter(project => project.isFavorite);
   });
 
   const currentProject = computed(() => {
-    if (projects.value.length === 0) return {};
+    if (projects?.value.length === 0) return {};
     // @ts-ignore
-    else return projects.value.find(project => project.id === projectID.value);
+    else return projects?.value.find(project => project.id === projectID.value);
   });
 
   const currentYear = computed(() => {

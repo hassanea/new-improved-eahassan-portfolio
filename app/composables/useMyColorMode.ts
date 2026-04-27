@@ -1,4 +1,4 @@
-/* useColorMode is a custom composable for Nuxt 3 and Vue 3 that assists with managing a user's preferred color scheme (mode) reactively.
+/* useMyColorModeis a custom composable for Nuxt 3 and Vue 3 that assists with managing a user's preferred color scheme (mode) reactively.
    Developed by: Evan Hassan | Version: v1.0 */
 
 import { computed, onMounted, onUnmounted, toValue, watch } from 'vue';
@@ -7,7 +7,7 @@ import { getModeFromStorage, setModeToStorage } from '@/utils';
 // getModeFromStorage retrieves the current color mode from localStorage if it exists.
 // setModeToStorage sets and stores the current color mode to localStorage.
 
-export const useColorMode = (
+export const useMyColorMode = (
   fallback: string = 'dark',
   storageOption: string = 'localStorage',
 ) => {
