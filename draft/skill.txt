@@ -1,0 +1,13 @@
+  { name: 'Bootstrap', level: '50%' },
+  { name: 'PHP', level: '15%' },
+  { name: 'Node.js', level: '20%' },
+  { name: 'Express.js', level: '15%' },
+  { name: 'Git', level: '60%' },
+  { name: 'SEO', level: '15%' },
+  { name: 'WordPress', level: '33%' },
+  { name: 'Cloud Computing', level: '25%' },
+  { name: 'Scripting', level: '15%' },
+  { name: 'Data & Analytics', level: '20%' },
+  { name: 'Adobe Photoshop', level: '15%' },
+  { name: 'Photography', level: '15%' },
+  { name: 'Prototyping', level: '15%' }

@@ -1,0 +1,254 @@
+/* Navlink within Nav.js component */            
+
+            {
+          /* <li><a className="smoothscroll" href="#testimonials">Testimonials</a></li> */
+            }
+
+fslightbox styles
+
+<style>
+  #app .fslightbox-container .fslightboxc {
+    z-index: 2400;
+  }
+  </style>
+
+<style scoped>
+    .fslightbox-container {
+    background: linear-gradient(rgba(30, 30, 30, 0.8), black 1810%);
+    z-index: 2200;
+  } 
+  </style>
+
+
+// BaseSwitch.vue in App.vue
+
+  <!-- <base-switch
+    @toggle="handleColorThemeChange"
+    :label="setColorSwitchLabel"
+    :is-checked="isSwitchChecked"
+    @keydown.space="handleKeyboardEventOnFocus(handleColorThemeChange)"
+    @keydown.enter="handleKeyboardEventOnFocus(handleColorThemeChange)"
+  >
+    <template v-slot:icon>
+      <font-awesome-icon :icon="setColorSwitchIcon" />
+    </template>
+  </base-switch> -->
+
+// BaseNavbar.vue
+
+// /blog router-link
+
+      <!-- <li class="nav-item">
+        <base-link to="blog" variant="nav">
+          <template v-slot:default> Blog </template>
+        </base-link>
+      </li> -->
+
+/* background: url('https://images.eahassan.com/portfolio/newer-header-showcase.jpg') no-repeat
+    center center/cover border-box fixed; */
+
+/* @media only screen and (min-width: 481px) and (max-width: 1024px) {
+   .main-header {
+    background-image: url('https://images.eahassan.com/portfolio/newer-header-showcase-tablet.jpg');
+    background-attachment: scroll;
+  } 
+} */
+
+/* .main-header {
+    background-image: url('https://images.eahassan.com/portfolio/newer-header-showcase-mobile.jpg');
+    background-attachment: scroll;
+  } */
+
+// Unused Json data for Testimonials
+
+
+  "testimonials":{
+    "testimonials":[
+      {
+        "text":"Here you should write some nice things that someone has said about you. No lies though, employers can tell when you are lying.",
+        "user":"Kareem Abdul Jabbar"
+      },
+      {
+        "text":"That Tim Baker must be one of the most brilliant developers I've ever met! It is amazing that nobody has hired him yet. Hey you, you should hire this guy, he may be fresh out of University and have zero on the job experience but I am confident that he will be one of your best developers in no time!",
+        "user":"Steve Wozniak... impersonator"
+      }
+    ]
+  }
+
+
+  // Old Projects:
+
+
+"projects": [
+    {
+      "id": 1,
+      "title": "Movie Kino",
+      "category": "Personal",
+      "description": "Movie Kino is a responsive movie rating CRUD application displays a sampling of over a hundred movies with associated details like official poster, movie trailer, and genre. Application was built with Vue.js, Supabase's PostgresSQL database, and Tailwind CSS.",
+      "image": "movie-kino.jpg",
+      "url": "https://www.moviekino.net/",
+      "tags": ["Vue", "Supabase", "Tailwind CSS"]
+    },
+    {
+      "id": 2,
+      "title": "UI Snippets",
+      "category": "Personal",
+      "description": "UI Snippet is a compilation of common pieces utilized in user interface design. Components built with HTML5, CSS3, and JavaScript.",
+      "image": "ui-snippets.jpg",
+      "url": "https://ui-snippets.netlify.app/",
+      "tags": ["HTML5", "CSS3", "JavaScript", "DOM API"]
+    },
+    {
+      "id": 3,
+      "title": "Kingpin Bowling Tracker",
+      "category": "College - Senior Capstone Project",
+      "description": "Kingpin is a bowling tracker web application utilized by management of bowling centers and leagues. Application was developed with the Django web framework, HTML5, Bootstrap, and jQuery.",
+      "image": "kingpin-bt.jpg",
+      "url": "https://kingpin-bt.com",
+      "sourceCodeURL": "https://github.com/hassanea/KPBT",
+      "tags": [
+        "Django",
+        "Python",
+        "HTML5",
+        "CSS3",
+        "Bootstrap4",
+        "JavaScript",
+        "jQuery",
+        "SQLite"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Sacred Heart Church Site",
+      "category": "Work",
+      "description": "A website developed for Sacred Heart Church that provides a functional visual layout, with improved usability, and accessibility. The site generated with HTML5, Bootstrap, CSS3, JavaScript, and jQuery.",
+      "image": "sacred-heart-website.jpg",
+      "url": "https://www.esacredheart.org",
+      "tags": [
+        "HTML5",
+        "CSS3",
+        "Bootstrap",
+        "JavaScript",
+        "jQuery",
+        "PHP",
+        "MySQL",
+        "AWS Cloudfront"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Reroot Pontiac's Green Infrastructure Site",
+      "category": "College - Internship project",
+      "description": "Reroot Pontiac GI site is a website dedicated to green infrastructure in an urban setting. Site was created utilizing HTML5, Bootstrap, and jQuery.",
+      "image": "reroot-pontiac-gi-webite.jpg",
+      "url": "http://rerootgi.com",
+      "sourceCodeURL": "https://github.com/hassanea/Reroot_New-Website",
+      "tags": ["HTML5", "CSS3", "Bootstrap", "JavaScript", "jQuery", "PHP"]
+    },
+    {
+      "id": 6,
+      "title": "My Reads",
+      "category": "Udacity - Course Project",
+      "description": "MyReads is a webapp that allows a user to categorize their bookshelf. The application was created using ReactJS and CSS3.",
+      "image": "my-reads.jpg",
+      "url": "http://my-reads-app.s3-website-us-east-1.amazonaws.com",
+      "sourceCodeURL": "https://github.com/hassanea/Udacity-MyReads",
+      "tags": ["ReactJS", "CSS3"]
+    },
+    {
+      "id": 7,
+      "title": "EdgeLedger Inc.",
+      "category": "Udemy course Project",
+      "description": "EdgeLedger, Inc. is a fictitious financial investment firm that supplies investment banking, asset portfolios, and tax services. Website was produced with HTML5, CSS3, and JavaScript.",
+      "image": "edgeledger.jpg",
+      "url": "https://www.edgeledger.financial",
+      "tags": ["HTML5", "CSS3", "JavaScript"]
+    },
+    {
+      "id": 8,
+      "title": "uHost Solutions Web Hosting",
+      "category": "Udemy course Project",
+      "description": "uHost is an imaginary web hosting service that offers several monthly plans based on website / webapp requirements. Website was made with HTML5, CSS3, and JavaScript.",
+      "image": "uhost.jpg",
+      "url": "https://uhost.solutions",
+      "tags": ["HTML5", "CSS3", "JavaScript"]
+    },
+    {
+      "id": 9,
+      "title": "Omnifood Eats",
+      "category": "Udemy course Project",
+      "description": "Omnifood Eats is a fictional food delivery service website that offers healthy meals delivered to your door. Website was created utilizing HTML5, CSS3, and jQuery.",
+      "image": "omnifood.jpg",
+      "url": "https://www.omnifood-eats.com",
+      "tags": ["HTML5", "CSS3", "JavaScript"]
+    }
+  ],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {
+      "id": 6,
+      "title": "Reroot Task Scheduler",
+      "category": "College - Internship project",
+      "description": "Reroot Task Scheduler is CRUD (create-read-update-delete) application created to manage employee and volunteer tasks at several Reroot properties. Application was made with ReactJS, ExpressJS, NodeJS, MySQL, W3.CSS, and Material-UI.",
+      "image": "reroot-pontiac-gis-todos-app.jpg",
+      "url": "https://www.reroot-task-scheduler.com",
+      "sourceCodeURL": "https://github.com/hassanea/GIS_To_dos",
+      "tags": [
+        "ReactJS",
+        "ExpressJS",
+        "NodeJS",
+        "JavaScript",
+        "jQuery",
+        "HTML5",
+        "CSS3",
+        "W3.CSS",
+        "Material-UI",
+        "MySQL"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Music Database",
+      "category": "College - Database Design and Implementation Project",
+      "description": "MusicDB is a CRUD application that enables the user to input favorite music and rate their songs and albums as well as other user's picks. It was generated with HTML5, Bootstrap, jQuery, PHP, and MySQL.",
+      "image": "music-db.jpg",
+      "url": "https://www.music-db.io/home.php",
+      "tags": ["HTML5", "CSS3", "Bootstrap", "jQuery", "PHP", "MySQL", "Digital Ocean CDN"]
+    },
+
+
+      {
+      "id": 10,
+      "title": "Hotel BT",
+      "category": "Udemy course Project",
+      "description": "Hotel BT is a make-believe luxury hotel in downtown Boston. Website was constructed with HTML5, and CSS3.",
+      "image": "hotel-bt.jpg",
+      "url": "https://www.hotel-bt.online",
+      "tags": ["HTML5", "CSS3"]
+    },
+
+      {
+      "id": 13,
+      "title": "Benjamin",
+      "category": "College - Software Engineering Project",
+      "description": "Benjamin is a personal budgeting web application developed to track personal expenses. Application was made with the Django web framework, HTML5, Bootstrap, and jQuery.",
+      "image": "benjamin.jpg",
+      "url": "http://benjamin-expense.herokuapp.com",
+      "sourceCodeURL": "https://github.com/hassanea/benjamin-expense",
+      "tags": ["Django", "Python", "HTML5", "CSS3", "Bootstrap4", "JavaScript", "jQuery", "SQLite"]
+    }

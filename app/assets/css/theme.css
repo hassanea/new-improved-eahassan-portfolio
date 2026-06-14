@@ -1,0 +1,128 @@
+@theme {
+  --color-primary: #475867;
+  --color-primary-light: #6b7985;
+  --color-secondary: #2c4e6d;
+  --color-tertiary: #6d9bc3;
+  --color-quaternary: #0f9397;
+  --color-quinary: #0a4aaa;
+  --color-alternative: #dbe9f4;
+  --color-light: #fcfbfc;
+  --color-dark: #000814;
+  --color-selection: #9ec6d6;
+  --color-heads: #313131;
+  --color-linkedin: #0976b4;
+  --color-github: #c9a0ff;
+  --color-gitlab: #e24329;
+  --color-upwork: #6f0;
+  --color-website: #00008b;
+  --color-internship: #a0a9fe;
+  --color-personal: #19d18b;
+  --color-college: #ae9165;
+  --color-udemy: #6e0dae;
+  --color-udacity: #2015ff;
+  --color-work: #ffbf00;
+  --color-html: #e44d26;
+  --color-html-2: #f16529;
+  --color-css3: #264de4;
+  --color-javascript: #f0db4f;
+  --color-typescript: #3178c6;
+  --color-dom: #74c365;
+  --color-jquery: #0769ad;
+  --color-vue: #42b883;
+  --color-pinia: #ffd350;
+  --color-harlem: #285d44;
+  --color-vaxee: #91d788;
+  --color-react: #58c4dc;
+  --color-redux: #593d88;
+  --color-express: #eeeeee;
+  --color-express-text: #444;
+  --color-sql: #00758f;
+  --color-postgresql: #326691;
+  --color-oracledb: #c74634;
+  --color-mongodb: #00ed64;
+  --color-bootstrap: #5a23c9;
+  --color-tailwind: #0cb5d0;
+  --color-supabase: #006239;
+  --color-aws: #141f2e;
+  --color-vercel: #171717;
+  --color-vercel-text: #fafafa;
+  --color-digital-ocean: #3d9fff;
+  --color-akamai-cloud: #55afe1;
+  --color-google:
+    linear-gradient(#4285f4, transparent),
+    linear-gradient(200deg, #db4437, #f4b400, #0f9d58);
+  --color-firebase: linear-gradient(#ffa611, #f5820d, #ffcb2b);
+  --color-stackoverflow: #ffa500;
+  --font-sans: 'Open Sans', sans-serif;
+  --font-sans2: 'Roboto', sans-serif;
+  --text-2-5xl: 1.75rem;
+  --text-3-5xl: 2rem;
+  --text-4-5xl: 2.5rem;
+}
+
+/* 
+
+.html {
+    background: linear-gradient(#e44d26 40%, #f16529 60%);
+  }
+
+  .node {
+    background: linear-gradient(#68a063 45%, #3c873a 55%);
+  }
+
+  .nuxt {
+    background: linear-gradient(#00dc82, #101010);
+  }
+.next {
+    background: conical-gradient(#ededed, #000000);
+  }
+  .php {
+    background: linear-gradient(#484c89, #777bb3);
+    @apply text-light;
+  }
+      .sqlite {
+    background: linear-gradient(#90d4f4, #0f80cc, #003b57);
+  }
+  .mysql {
+    background: radial-gradient(#00758f 80%, #f29111 20%);
+    @apply text-light;
+  }
+
+  .mariadb {
+    background: linear-gradient(#c0765a 50%, #1f305f 50%);
+    @apply text-light;
+  }
+
+  .sqlserver {
+    background: linear-gradient(#007fe5 50%, #82c6fb 50%);
+    @apply text-dark;
+  }
+
+  .firebase {
+    @apply bg-firebase;
+  }
+
+    .cloudflare {
+    background: linear-gradient(#fc7c1e 50%, #ffa945 50%);
+    @apply text-[#404041];
+  }
+  .ms-azure {
+    background: linear-gradient(#104581 33.33%, #3ccbf4 33.33%, #0078d4 33.33%);
+    @apply text-dark;
+  }
+
+    .django {
+    background: linear-gradient(#092e29 85%, #f0faff 15%);
+    @apply text-light;
+  }
+    
+
+    .adobe {
+    background: radial-gradient(#fa0c00 66%, #ffffff 24%);
+  }
+
+      .goog-cloud {
+    @apply bg-google;
+  }
+
+*/

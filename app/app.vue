@@ -1,0 +1,301 @@
+<template>
+  <div class="bg-alternative text-dark dark:bg-[#A9CBE5]">
+    <base-skip-link v-focus to="#content" label="Skip to main content" />
+    <NuxtPwaManifest />
+    <NuxtLoadingIndicator />
+    <NuxtRouteAnnouncer />
+    <UApp :locale="locales[locale]">
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </UApp>
+
+    <!-- <div
+        class="absolute bottom-[1%] left-[10%] z-300 rounded-xl bg-light text-center"
+      >
+        <base-drop-down-menu
+          v-tooltip="'A11y Settings'"
+          :toggle="showA11y"
+          label="Accessibility Settings"
+          variant="up"
+          @handle-toggle="showA11y = !showA11y"
+          @handle-close="showA11y = false"
+        >
+          <template #icon>
+            <lazy-nuxt-img
+              :src="`/icons/a11y.svg`"
+              alt=""
+              provider="imagekit"
+              width="48"
+              height="48"
+              loading="lazy"
+              class="a11y-icon inline-block h-8 w-8 text-center align-middle"
+            />
+          </template>
+          <template #default>
+            <client-only>
+              <div
+                role="group"
+                aria-label="User Website Accessibility Preferences"
+                class="grid h-auto w-full grid-cols-1 gap-2"
+              >
+                <lazy-base-select
+                  v-model="contrastMode"
+                  :choices="contrastOptions"
+                  label="Prefers Contrast Theme"
+                  description="Set preferred contrast scheme on website."
+                  @update:model-value="contrastMode = $event"
+                />
+                <lazy-base-switch
+                  :label="setReducedMotionSwitchLabel"
+                  :model-value="isNoPreference"
+                  :mode="reduceMotion"
+                  description="Enable or disable animations and transitions on website."
+                  @update:model-value="handleMotionChange"
+                >
+                  <template #icon>
+                    <font-awesome :icon="setReducedMotionSwitchIcon" />
+                  </template>
+                </lazy-base-switch>
+                <lazy-base-switch
+                  :label="setTransparentSwitchLabel"
+                  :model-value="isTransparent"
+                  :mode="transparentMode"
+                  description="Enable or disable tranparency of content on website."
+                  @update:model-value="handleTransparentChange"
+                >
+                  <template #icon>
+                    <font-awesome :icon="setTransparentSwitchIcon" />
+                  </template>
+                </lazy-base-switch>
+              </div>
+            </client-only>
+          </template>
+        </base-drop-down-menu>
+      </div> -->
+
+    <div>
+      <ClientOnly>
+        <div
+          v-if="$pwa?.offlineReady || $pwa?.needRefresh"
+          class="pwa-toast"
+          role="alert"
+        >
+          <div class="message">
+            <span v-if="$pwa.offlineReady"> App ready to work offline </span>
+            <span v-else>
+              New content available, click on reload button to update.
+            </span>
+          </div>
+          <button v-if="$pwa.needRefresh" @click="$pwa.updateServiceWorker()">
+            Reload
+          </button>
+          <button @click="$pwa.cancelPrompt()">Close</button>
+        </div>
+        <div
+          v-if="
+            $pwa?.showInstallPrompt && !$pwa?.offlineReady && !$pwa?.needRefresh
+          "
+          class="pwa-toast"
+          role="alert"
+        >
+          <div class="message">
+            <span> Install PWA </span>
+          </div>
+          <button @click="$pwa.install()">Install</button>
+          <button @click="$pwa.cancelInstall()">Cancel</button>
+          <div v-show="$pwa?.needRefresh">
+            <span
+              >New content available, click on reload button to update.</span
+            >
+          </div>
+        </div>
+      </ClientOnly>
+    </div>
+  </div>
+
+  <dev-only>
+    <Teleport v-if="displayCookieBanner" to="#teleports">
+      <transition name="fade">
+        <lazy-base-modal
+          varaint="custom"
+          :modelValue="displayCookieBanner"
+          title="Cookie Policy"
+          description="Managing the website's usage of cookies"
+          @update:modelValue="toggleCookieBannerModal"
+          @close-modal="closeCookieBannerModal"
+          class="cookie-modal"
+        >
+          <template #default>
+            <span
+              class="mx-auto inline-flex h-7.5 w-7.5 items-center justify-center align-middle text-3xl"
+              ><lazy-font-awesome
+                icon="fa-solid fa-cookie"
+                class="text-red-950"
+            /></span>
+            <div
+              class="flex flex-1 flex-row flex-wrap items-center justify-center gap-3"
+            >
+              <lazy-base-button label="Accept cookies" class="flex-1/2">
+                <template #icon>
+                  <lazy-font-awesome icon="fa-solid fa-check" />
+                </template>
+                <template #default> Accept Cookies </template>
+              </lazy-base-button>
+              <lazy-base-button
+                @click="closeCookieBannerModal"
+                @keydown.enter="closeCookieBannerModal"
+                label="Decline cookies"
+                class="decline flex-1/2 text-dark"
+              >
+                <template #icon>
+                  <lazy-font-awesome icon="fa-solid fa-xmark" />
+                </template>
+                <template #default> Decline Cookies </template>
+              </lazy-base-button>
+            </div>
+          </template>
+        </lazy-base-modal>
+      </transition>
+    </Teleport>
+  </dev-only>
+</template>
+
+<script setup lang="ts">
+  import * as locales from '@nuxt/ui/locale';
+  import { useMyColorMode } from '@/composables/useMyColorMode';
+  // import { useReducedMotion } from '@/composables/useReducedMotion';
+  // import { useContrast } from '@/composables/useContrast';
+  // import { useTransparency } from '@/composables/useTransparency';
+  import BaseSkipLink from '@/components/BaseSkipLink.vue';
+  // import BaseDropDownMenu from '@/components/BaseDropDownMenu.vue';
+  import { usePortfolioStore } from '~~/stores/usePortfolioStore';
+
+  const store = usePortfolioStore();
+
+  const { currentDate } = storeToRefs(store);
+
+  const { locale } = useI18n();
+
+  // @ts-ignore
+  const lang = computed(() => locales[locale?.value]?.code);
+  // @ts-ignore
+  const dir = computed(() => locales[locale?.value]?.dir);
+
+  // @ts-ignore
+  const { initializeMediaFeature, setMyColorMode, cleanUpMyColorMode } =
+    useMyColorMode();
+
+  await callOnce('init-state', () => {
+    store.handleFetchProjectData();
+    // @ts-ignore
+    currentDate.value = new Date();
+  });
+
+  const colorMode = useState('color-mode');
+  // const reduceMotion = useState('reduce-motion');
+  // const contrastMode = useState('contrast-mode');
+  // const transparentMode = useState('transparent-mode');
+  // const isNoPreference = useState('reduce-switch');
+  // const isTransparent = useState('tranparent-switch');
+
+  const { $pwa } = useNuxtApp();
+  const toast = useToast();
+  const displayCookieBanner = ref(false);
+  // const showA11y = ref(false);
+  const currentRoute = useRoute();
+  const routeName = ref('');
+
+  // @ts-ignore
+  // const {
+  //   setReducedMotionSwitchIcon,
+  //   setReducedMotionSwitchLabel,
+  //   handleMotionChange,
+  // } = useReducedMotion();
+  // const { contrastOptions } = useContrast();
+  // const {
+  //   setTransparentSwitchIcon,
+  //   setTransparentSwitchLabel,
+  //   handleTransparentChange,
+  // } = useTransparency();
+
+  useScriptMatomoAnalytics({
+    matomoUrl: 'https://www.eahassan.com/matomo/',
+    siteId: '1',
+    watch: true,
+    enableLinkTracking: true,
+  });
+
+  onMounted(() => {
+    console.log('Mounted');
+    initializeMediaFeature(setMyColorMode);
+
+    if ($pwa?.offlineReady) {
+      toast.add({
+        title: 'Work Offline?',
+        description: 'App ready to work offline.',
+      });
+    }
+    useHead({
+       title: routeName,
+       titleTemplate: 
+       `Evan Hassan's Portfolio | Aspiring Web Developer | %s`,
+      htmlAttrs: {
+        lang: lang.value,
+        dir: dir.value,
+        class: {
+          dark: () => colorMode.value === 'dark',
+          light: () => colorMode.value === 'light',
+        },
+      },
+      // meta: [ { property: 'og:title', content: document?.title,  }, ],
+    });
+  });
+
+  /*
+            'reduced-motion-no-pref': () =>
+            reduceMotion.value === 'no-preference',
+          'reduced-motion-reduce': () => reduceMotion.value === 'reduce',
+          'contrast-no-pref': () => contrastMode.value === 'no-preference',
+          'more-contrast': () => contrastMode.value === 'more',
+          'less-contrast': () => contrastMode.value === 'less',
+          'tranparent-no-pref': () => transparentMode.value === 'no-preference',
+          'tranparent-reduce': () => transparentMode.value === 'reduce',
+  
+  */
+
+  watch(
+    () => currentRoute.name,
+    value => {
+      // @ts-ignore
+      routeName.value = value;
+    },
+    { immediate: true },
+  );
+
+  const toggleCookieBannerModal = () => {
+    displayCookieBanner.value = !displayCookieBanner.value;
+  };
+
+  const closeCookieBannerModal = () => {
+    displayCookieBanner.value = false;
+  };
+
+  onUnmounted(() => cleanUpMyColorMode());
+</script>
+
+<style lang="css" scoped>
+  @import './assets/css/main.css';
+  .a11y-icon {
+    filter: brightness(0) saturate(100%) invert(7%) sepia(97%) saturate(7452%)
+      hue-rotate(246deg) brightness(106%) contrast(145%);
+  }
+
+  .decline {
+    @apply bg-red-800 bg-none hover:text-rose-800;
+  }
+
+  .cookie-modal:deep(.modal) {
+    @apply bg-alternative;
+  }
+</style>

@@ -1,0 +1,51 @@
+<template>
+  <base-project-card
+    :project="currentProject"
+    @handle-toggle-tags="handleShownTags"
+  />
+</template>
+
+<script setup lang="ts">
+  import BaseProjectCard from '@/components/BaseProjectCard.vue';
+  import { usePortfolioStore } from '../../../stores/usePortfolioStore';
+
+  const store = usePortfolioStore();
+  const { projectID, currentProject } = storeToRefs(store);
+
+  watch(
+    () => useRoute().params.id,
+    currentValue => {
+      projectID.value = currentValue;
+    },
+    { immediate: true },
+  );
+
+  definePageMeta({
+    name: 'Project',
+    layout: 'project-layout',
+    depth: 3,
+    keepalive: true,
+  });
+
+  const toggledTags = ref(false);
+
+  const handleShownTags = () => {
+    toggledTags.value = !toggledTags.value;
+  };
+
+  onMounted(() => {
+    const { name: routeName } = useRoute();
+    useHead({
+      title: `Evan Hassan's Portfolio | ${routeName} | ${currentProject?.value.title}`,
+      titleTemplate: null,
+    });
+  });
+
+  if (!currentProject.value) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Project Not Found',
+      fatal: true,
+    });
+  }
+</script>

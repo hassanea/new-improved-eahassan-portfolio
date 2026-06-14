@@ -1,0 +1,147 @@
+@utility html {
+  @apply bg-linear-to-t from-html from-40% to-html-2 to-60%;
+  /* background: linear-gradient(#e44d26 40%, #f16529 60%); */
+}
+
+@utility css {
+  @apply bg-css3 text-light;
+}
+
+@utility javascript {
+  @apply bg-javascript text-dark;
+}
+@utility typescript {
+  @apply bg-typescript text-light;
+}
+@utility dom {
+  @apply bg-dom text-dark;
+}
+/* @utility node {
+    background: linear-gradient(#68a063 45%, #3c873a 55%);
+  } */
+@utility express {
+  @apply bg-express text-express-text;
+}
+@utility jquery {
+  @apply bg-jquery text-light;
+}
+@utility vue {
+  @apply bg-vue text-dark;
+}
+@utility pinia {
+  @apply bg-pinia text-dark;
+}
+@utility harlem {
+  @apply bg-harlem text-light;
+}
+@utility vaxee {
+  @apply bg-vaxee text-dark;
+}
+/* @utility nuxt {
+    background: linear-gradient(#00dc82, #101010);
+  } */
+@utility react {
+  @apply bg-react text-dark;
+}
+@utility redux {
+  @apply bg-redux text-light;
+}
+/* .next {
+    background: conical-gradient(#ededed, #000000);
+  } */
+/* .php {
+    background: linear-gradient(#484c89, #777bb3);
+    @apply text-light;
+  } */
+@utility sql {
+  @apply bg-sql text-light;
+}
+/* .sqlite {
+    background: linear-gradient(#90d4f4, #0f80cc, #003b57);
+  }
+  .mysql {
+    background: radial-gradient(#00758f 80%, #f29111 20%);
+    @apply text-light;
+  } */
+@utility postgresql {
+  @apply bg-postgresql text-light;
+}
+/* .mariadb {
+    background: linear-gradient(#c0765a 50%, #1f305f 50%);
+    @apply text-light;
+  } */
+@utility oracledb {
+  @apply bg-oracledb text-dark;
+}
+/* .sqlserver {
+    background: linear-gradient(#007fe5 50%, #82c6fb 50%);
+    @apply text-dark;
+  } */
+/* .firebase {
+    @apply bg-firebase;
+  } */
+@utility mongodb {
+  @apply bg-mongodb text-dark;
+}
+@utility bootstrap {
+  @apply bg-bootstrap text-light;
+}
+@utility tailwind {
+  @apply bg-tailwind text-dark;
+}
+@utility supabase {
+  @apply bg-supabase text-light;
+}
+@utility planetscale {
+  @apply bg-black text-white;
+}
+/* .django {
+    background: linear-gradient(#092e29 85%, #f0faff 15%);
+    @apply text-light;
+  } */
+@utility aws {
+  @apply bg-aws text-light;
+}
+/* .cloudflare {
+    background: linear-gradient(#fc7c1e 50%, #ffa945 50%);
+    @apply text-[#404041];
+  } */
+/* .ms-azure {
+    background: linear-gradient(#104581 33.33%, #3ccbf4 33.33%, #0078d4 33.33%);
+    @apply text-dark;
+  } */
+/* .goog-cloud {
+    @apply bg-google;
+  } */
+/* .netlify {
+  } */
+@utility vercel {
+  @apply bg-vercel text-vercel-text;
+}
+@utility digi-ocean {
+  @apply bg-digital-ocean text-dark;
+}
+@utility akamai-cloud {
+  @apply bg-akamai-cloud text-dark;
+}
+/* .adobe {
+    background: radial-gradient(#fa0c00 66%, #ffffff 24%);
+  } */
+@utility internship {
+  @apply bg-internship text-dark;
+}
+@utility personal {
+  @apply bg-personal text-dark;
+}
+@utility college {
+  @apply bg-college text-dark;
+}
+@utility udemy {
+  @apply bg-udemy text-light;
+}
+@utility udacity {
+  @apply bg-udacity text-light;
+}
+@utility work {
+  @apply bg-work text-dark;
+}
