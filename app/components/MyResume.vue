@@ -60,7 +60,7 @@
                 <div
                   v-for="experience in experiences"
                   :key="experience.company"
-                  class="work"
+                  class="work-experience"
                 >
                   <h3 class="resume-title">
                     {{ experience.company }}
@@ -127,184 +127,184 @@
 </template>
 
 <script setup>
-  import { handleAbbreviate } from '@/utils';
-  import BaseSection from '@/components/BaseSection.vue';
-  import BaseTabs from '@/components/BaseTabs.vue';
-  import BaseTabPane from '@/components/BaseTabPane.vue';
+import { handleAbbreviate } from "@/utils";
+import BaseSection from "@/components/BaseSection.vue";
+import BaseTabs from "@/components/BaseTabs.vue";
+import BaseTabPane from "@/components/BaseTabPane.vue";
 
-  defineOptions({
-    name: 'MyResume',
-  });
+defineOptions({
+  name: "MyResume",
+});
 
-  const props = defineProps({
-    education: {
-      type: Object,
-      required: true,
-      default: () => {
-        return {};
-      },
+const props = defineProps({
+  education: {
+    type: Object,
+    required: true,
+    default: () => {
+      return {};
     },
-    experiences: {
-      type: Array,
-      required: true,
-      default: () => {
-        return [];
-      },
+  },
+  experiences: {
+    type: Array,
+    required: true,
+    default: () => {
+      return [];
     },
-    skills: {
-      type: Array,
-      required: true,
-      default: () => {
-        return [];
-      },
+  },
+  skills: {
+    type: Array,
+    required: true,
+    default: () => {
+      return [];
     },
-    goals: {
-      type: Object,
-      required: true,
-      default: () => {
-        return [];
-      },
+  },
+  goals: {
+    type: Object,
+    required: true,
+    default: () => {
+      return [];
     },
-  });
+  },
+});
 
-  const { education } = props;
+const { education } = props;
 
-  const image = useImage();
+const image = useImage();
 
-  const selectedTab = ref(0);
+const selectedTab = ref(0);
 
-  const tabs = [
-    { title: 'Edu', icon: 'fa-solid fa-building-columns' },
-    { title: 'Work', icon: 'fa-solid fa-briefcase' },
-    { title: 'Skills', icon: 'fa-solid fa-bars-progress' },
-    { title: 'Goals', icon: 'fa-solid fa-bullseye-pointer' },
-  ];
+const tabs = [
+  { title: "Edu", icon: "fa-solid fa-building-columns" },
+  { title: "Work", icon: "fa-solid fa-briefcase" },
+  { title: "Skills", icon: "fa-solid fa-bars-progress" },
+  { title: "Goals", icon: "fa-solid fa-bullseye-pointer" },
+];
 
-  // map(tab => {
-  //   tab.id = `tab-${useId()}`;
-  //   tab.paneId = `pane-${tab.title.toLowerCase()}-${useId()}`;
-  //   return tab;
-  // });
+// map(tab => {
+//   tab.id = `tab-${useId()}`;
+//   tab.paneId = `pane-${tab.title.toLowerCase()}-${useId()}`;
+//   return tab;
+// });
 
-  const handleActivateTab = index => {
-    selectedTab.value = index;
-  };
+const handleActivateTab = (index) => {
+  selectedTab.value = index;
+};
 
-  const resumeBackgroundImage = computed(() => {
-    const url = image(`/portfolio/resume-bg.jpg`, {}, { provider: 'imagekit' });
-    return url;
-  });
+const resumeBackgroundImage = computed(() => {
+  const url = image(`/portfolio/resume-bg.jpg`, {}, { provider: "imagekit" });
+  return url;
+});
 
-  const almaMaterIcon = computed(() => {
-    return `/icons/oakland-university-icon.png`;
-  });
+const almaMaterIcon = computed(() => {
+  return `/icons/oakland-university-icon.png`;
+});
 
-  const degreeOfStudyAbbrev = computed(() => {
-    if (!Object.values(props.education).length > 0) return '';
-    return handleAbbreviate(education.degree.study);
-  });
+const degreeOfStudyAbbrev = computed(() => {
+  if (!Object.values(props.education).length > 0) return "";
+  return handleAbbreviate(education.degree.study);
+});
 </script>
 
 <style lang="css" scoped>
-  @import '../assets/css/main.css';
+@import "../assets/css/main.css";
 
+#resume {
+  padding: 5.625rem 0 4.5rem 0;
+}
+
+#resume .resume-title {
+  font:
+    normal bold 1.5625rem/1.2 "Open Sans",
+    sans-serif;
+}
+
+#resume .info {
+  font:
+    italic 500 1rem/1.5 Roboto,
+    sans-serif;
+  color: #000814;
+  margin-bottom: 1.125rem;
+  margin-top: 0.5625rem;
+}
+
+#resume .info span {
+  margin-right: 0.6rem;
+  margin-left: 0.6rem;
+}
+
+#resume .ou-icon {
+  border-radius: 6px;
+  display: inline-block;
+}
+
+#resume .degree {
+  @apply border-0 font-extrabold text-dark uppercase not-italic no-underline;
+}
+
+#resume .date {
+  font:
+    normal 500 0.9375rem/1.5 Roboto,
+    sans-serif;
+  margin-top: 0.375rem;
+}
+
+#resume .education-desc {
+  font-weight: 500;
+  line-height: 1.9;
+}
+
+#resume .work-experience:not(.work-experience:last-child) {
+  margin-bottom: 2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1.5px solid #4f5559;
+}
+
+@media only screen and (max-width: 768px) {
   #resume {
-    padding: 5.625rem 0 4.5rem 0;
+    padding: 3.6rem 0 2.5rem;
   }
+}
+@media only screen and (max-width: 767px) {
+  #resume .info,
+  #resume h3 {
+    text-align: center;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 930px) and (orientation: landscape) {
+  #resume {
+    padding: 4rem 0 3rem;
+  }
+}
+@media only screen and (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
+  #resume {
+    padding: 3.75rem 0 1.875rem;
+  }
+  #resume .work-experience:not(.work-experience:last-child) {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+  }
+}
 
-  #resume .resume-title {
-    font:
-      normal bold 1.5625rem/1.2 'Open Sans',
-      sans-serif;
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  #resume {
+    padding: 3.75rem 0 1.875rem;
+  }
+  #resume .date {
+    font-size: 0.9rem;
   }
 
   #resume .info {
-    font:
-      italic 500 1rem/1.5 Roboto,
-      sans-serif;
-    color: #000814;
-    margin-bottom: 1.125rem;
-    margin-top: 0.5625rem;
+    font-size: 0.9rem;
+    margin: 0.25rem 0 1.125rem;
   }
-
-  #resume .info span {
-    margin-right: 0.6rem;
-    margin-left: 0.6rem;
+  #resume .education-desc,
+  #resume .experience-desc {
+    margin-bottom: 1rem;
+    line-height: 1.7;
   }
-
-  #resume .ou-icon {
-    border-radius: 6px;
-    display: inline-block;
-  }
-
-  #resume .degree {
-    @apply border-0 font-extrabold text-dark uppercase not-italic no-underline;
-  }
-
-  #resume .date {
-    font:
-      normal 500 0.9375rem/1.5 Roboto,
-      sans-serif;
-    margin-top: 0.375rem;
-  }
-
-  #resume .education-desc {
-    font-weight: 500;
-    line-height: 1.9;
-  }
-
-  #resume .work:not(.work:last-child) {
-    margin-bottom: 2rem;
+  #resume .work-experience:not(.work-experience:last-child) {
+    margin-bottom: 1.5rem;
     padding-bottom: 0.75rem;
-    border-bottom: 1.5px solid #4f5559;
   }
-
-  @media only screen and (max-width: 768px) {
-    #resume {
-      padding: 3.6rem 0 2.5rem;
-    }
-  }
-  @media only screen and (max-width: 767px) {
-    #resume .info,
-    #resume h3 {
-      text-align: center;
-    }
-  }
-  @media only screen and (min-width: 769px) and (max-width: 930px) and (orientation: landscape) {
-    #resume {
-      padding: 4rem 0 3rem;
-    }
-  }
-  @media only screen and (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
-    #resume {
-      padding: 3.75rem 0 1.875rem;
-    }
-    #resume .work:not(.work:last-child) {
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.75rem;
-    }
-  }
-
-  @media only screen and (min-width: 320px) and (max-width: 480px) {
-    #resume {
-      padding: 3.75rem 0 1.875rem;
-    }
-    #resume .date {
-      font-size: 0.9rem;
-    }
-
-    #resume .info {
-      font-size: 0.9rem;
-      margin: 0.25rem 0 1.125rem;
-    }
-    #resume .education-desc,
-    #resume .experience-desc {
-      margin-bottom: 1rem;
-      line-height: 1.7;
-    }
-    #resume .work:not(.work:last-child) {
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.75rem;
-    }
-  }
+}
 </style>
